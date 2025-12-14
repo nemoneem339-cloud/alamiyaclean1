@@ -1,0 +1,118 @@
+---
+/**
+ * Breadcrumbs Component
+ * =====================
+ * مسار التنقل - يوضح للمستخدم مكانه في الموقع
+ * 
+ * ✅ مُحسَّن للموبايل: لا يلتف النص أبداً
+ * ✅ يدعم RTL بشكل كامل
+ * ✅ لا يظهر في الصفحة الرئيسية
+ */
+
+import { company } from '../data/siteInfo';
+
+const currentPath = Astro.url.pathname;
+const pathParts = currentPath.split('/').filter(Boolean);
+
+// ترجمة أسماء المسارات للعربية
+const translations: Record<string, string> = {
+  'services': 'خدماتنا',
+  'blog': 'المدونة',
+  'about': 'عن الشركة',
+  'contact': 'اتصل بنا',
+  'areas': 'المناطق',
+  'privacy': 'سياسة الخصوصية',
+  'terms': 'الشروط والأحكام',
+  'north-riyadh': 'شمال الرياض',
+  'al-malqa': 'حي الملقا',
+  'hittin': 'حي حطين',
+  'al-nargis': 'حي النرجس',
+  'al-yasmeen': 'حي الياسمين',
+  'al-aqiq': 'حي العقيق',
+  'cleaning-villas': 'تنظيف فلل',
+  'pest-control': 'مكافحة حشرات',
+  'water-tanks': 'تنظيف خزانات',
+  'ac-cleaning': 'غسيل مكيفات',
+  'sofa-cleaning': 'غسيل كنب',
+  'marble-polishing': 'جلي رخام',
+  'home-cleaning': 'تنظيف منازل',
+  'labor-supply': 'توريد عمال',
+  'al-sahafa': 'حي الصحافة',
+  'al-qairawan': 'حي القيروان',
+  'al-arid': 'حي العارض',
+  'foam-insulation': 'عزل فوم',
+};
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+  isLast: boolean;
+}
+
+// بناء قائمة المسارات
+const breadcrumbs: BreadcrumbItem[] = [
+  { name: 'الرئيسية', url: '/', isLast: pathParts.length === 0 }
+];
+
+let path = '';
+pathParts.forEach((part, index) => {
+  path += `/${part}`;
+  const name = translations[part] || decodeURIComponent(part).replace(/-/g, ' ');
+  breadcrumbs.push({
+    name,
+    url: path,
+    isLast: index === pathParts.length - 1
+  });
+});
+
+// لا تظهر في الصفحة الرئيسية
+const showBreadcrumbs = pathParts.length > 0;
+---
+
+{showBreadcrumbs && (
+  <nav aria-label="مسار التنقل" class="bg-slate-100 border-b border-slate-200">
+    <div class="container mx-auto px-4 py-2.5">
+      {/* 
+        النقاط المهمة:
+        1. flex + nowrap = العناصر في سطر واحد دائماً
+        2. overflow-x-auto = لو المحتوى أكبر من العرض، يظهر scroll أفقي
+        3. gap-1.5 = مسافة صغيرة ومناسبة
+      */}
+      <ol class="flex items-center gap-1.5 text-sm whitespace-nowrap overflow-x-auto scrollbar-hide">
+        {breadcrumbs.map((item, idx) => (
+          <li class="flex items-center gap-1.5 shrink-0">
+            {/* السهم الفاصل - يظهر قبل كل عنصر ما عدا الأول */}
+            {idx > 0 && (
+              <span class="text-slate-400 text-xs">/</span>
+            )}
+            
+            {/* الرابط أو النص */}
+            {item.isLast ? (
+              <span class="text-primary font-semibold truncate max-w-[150px] sm:max-w-none">
+                {item.name}
+              </span>
+            ) : (
+              <a 
+                href={item.url} 
+                class="text-slate-600 hover:text-primary transition-colors truncate max-w-[100px] sm:max-w-none"
+              >
+                {item.name}
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+)}
+
+<style>
+  /* إخفاء شريط التمرير مع الحفاظ على التمرير */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

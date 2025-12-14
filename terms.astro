@@ -1,0 +1,217 @@
+---
+/**
+ * صفحة الشروط والأحكام
+ * ====================
+ * الشروط والأحكام الخاصة بشركة العالمية كلين
+ */
+
+import Base from '../layouts/Base.astro';
+import { company } from '../data/siteInfo';
+
+const lastUpdated = "14 ديسمبر 2024";
+---
+
+<Base 
+  title="الشروط والأحكام" 
+  description="الشروط والأحكام الخاصة بشركة العالمية كلين. اقرأ شروط الخدمة وسياسات الضمان والإلغاء قبل الحجز."
+>
+
+  <!-- Header -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">الشروط والأحكام</h1>
+      <p class="text-slate-400">آخر تحديث: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      
+      <div class="prose prose-lg max-w-none text-slate-700">
+        
+        <!-- Introduction -->
+        <div class="bg-primary/5 border-r-4 border-primary p-6 rounded-lg mb-10">
+          <p class="text-slate-900 font-medium m-0">
+            باستخدامك لموقع <strong>{company.name}</strong> أو طلب خدماتنا، فإنك توافق على هذه الشروط والأحكام. يرجى قراءتها بعناية قبل الحجز أو استخدام خدماتنا.
+          </p>
+        </div>
+
+        <!-- 1. التعريفات -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+          التعريفات
+        </h2>
+        
+        <div class="bg-slate-50 p-6 rounded-xl my-6">
+          <ul class="space-y-2 m-0">
+            <li><strong>"الشركة"</strong>: تشير إلى شركة العالمية كلين للخدمات بالرياض.</li>
+            <li><strong>"العميل"</strong>: يشير إلى أي شخص أو جهة تطلب أو تستخدم خدماتنا.</li>
+            <li><strong>"الخدمات"</strong>: تشمل جميع خدمات التنظيف والصيانة ومكافحة الحشرات التي نقدمها.</li>
+            <li><strong>"الموقع"</strong>: يشير إلى موقعنا الإلكتروني alamiyaclean.com</li>
+          </ul>
+        </div>
+
+        <!-- 2. شروط الخدمة -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+          شروط الخدمة
+        </h2>
+
+        <h3 class="text-xl font-bold text-slate-800 mt-6 mb-3">2.1 طلب الخدمة</h3>
+        <ul class="space-y-2">
+          <li>يجب أن يكون طالب الخدمة أكبر من 18 عاماً.</li>
+          <li>يجب تقديم معلومات صحيحة ودقيقة عند الحجز.</li>
+          <li>نحتفظ بحق رفض أي طلب دون إبداء الأسباب.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-slate-800 mt-6 mb-3">2.2 المعاينة والتسعير</h3>
+        <ul class="space-y-2">
+          <li>الأسعار المعروضة تقديرية وقد تتغير بناءً على المعاينة الفعلية.</li>
+          <li>المعاينة مجانية ولا تعني الالتزام بالحجز.</li>
+          <li>يتم تأكيد السعر النهائي قبل بدء العمل.</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-slate-800 mt-6 mb-3">2.3 التنفيذ</h3>
+        <ul class="space-y-2">
+          <li>نلتزم بالموعد المتفق عليه مع هامش تأخير أقصاه ساعة واحدة.</li>
+          <li>يجب على العميل توفير الوصول للمكان في الموعد المحدد.</li>
+          <li>يجب إخلاء المناطق المراد تنظيفها من المتعلقات الثمينة والحساسة.</li>
+        </ul>
+
+        <!-- 3. سياسة الأسعار والدفع -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+          سياسة الأسعار والدفع
+        </h2>
+
+        <div class="bg-slate-50 p-6 rounded-xl my-6">
+          <ul class="space-y-3 m-0">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>الأسعار بالريال السعودي وتشمل ضريبة القيمة المضافة (15%).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>الدفع يتم بعد إتمام الخدمة والتأكد من رضا العميل.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>نقبل الدفع نقداً، بالتحويل البنكي، أو عبر مدى.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 shrink-0 mt-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>الخدمات الكبيرة قد تتطلب دفعة مقدمة 25%.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 4. الضمان -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">4</span>
+          سياسة الضمان
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+          <div class="bg-green-50 p-5 rounded-xl border border-green-100">
+            <h4 class="font-bold text-green-800 mb-2">✓ خدمات التنظيف</h4>
+            <p class="text-sm text-green-700 m-0">ضمان 48 ساعة. إذا لم تكن راضياً، نعود لإعادة العمل مجاناً.</p>
+          </div>
+          <div class="bg-green-50 p-5 rounded-xl border border-green-100">
+            <h4 class="font-bold text-green-800 mb-2">✓ مكافحة الحشرات</h4>
+            <p class="text-sm text-green-700 m-0">ضمان 3 أشهر ضد عودة الحشرات للأنواع المستهدفة.</p>
+          </div>
+          <div class="bg-green-50 p-5 rounded-xl border border-green-100">
+            <h4 class="font-bold text-green-800 mb-2">✓ جلي الرخام</h4>
+            <p class="text-sm text-green-700 m-0">ضمان على اللمعان لمدة 6 أشهر مع الالتزام بالتعليمات.</p>
+          </div>
+          <div class="bg-green-50 p-5 rounded-xl border border-green-100">
+            <h4 class="font-bold text-green-800 mb-2">✓ عزل الفوم</h4>
+            <p class="text-sm text-green-700 m-0">ضمان 10 سنوات على العزل الحراري والمائي.</p>
+          </div>
+        </div>
+
+        <!-- 5. الإلغاء وإعادة الجدولة -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">5</span>
+          سياسة الإلغاء وإعادة الجدولة
+        </h2>
+
+        <div class="bg-amber-50 border border-amber-200 p-6 rounded-xl my-6">
+          <h4 class="font-bold text-amber-800 mb-3">⚠️ شروط الإلغاء:</h4>
+          <ul class="space-y-2 m-0 text-amber-900">
+            <li><strong>قبل 24 ساعة:</strong> إلغاء مجاني بالكامل.</li>
+            <li><strong>قبل 12 ساعة:</strong> خصم 25% من قيمة الخدمة.</li>
+            <li><strong>أقل من 12 ساعة:</strong> خصم 50% من قيمة الخدمة.</li>
+            <li><strong>عدم الحضور:</strong> خصم 100% من قيمة الخدمة.</li>
+          </ul>
+        </div>
+
+        <p>يمكن إعادة جدولة الموعد مرة واحدة مجاناً قبل 12 ساعة من الموعد المحدد.</p>
+
+        <!-- 6. حدود المسؤولية -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">6</span>
+          حدود المسؤولية
+        </h2>
+
+        <ul class="space-y-2">
+          <li>لا نتحمل مسؤولية الأضرار الناتجة عن عيوب مسبقة في المواد أو الأسطح.</li>
+          <li>لا نتحمل مسؤولية المتعلقات الشخصية الثمينة غير المؤمن عليها.</li>
+          <li>الحد الأقصى للتعويض لا يتجاوز قيمة الخدمة المقدمة.</li>
+          <li>يجب الإبلاغ عن أي ضرر خلال 24 ساعة من إتمام الخدمة.</li>
+        </ul>
+
+        <!-- 7. حقوق الملكية الفكرية -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">7</span>
+          حقوق الملكية الفكرية
+        </h2>
+
+        <p>جميع المحتويات الموجودة على هذا الموقع، بما في ذلك النصوص والصور والشعارات والتصاميم، هي ملك لشركة العالمية كلين ومحمية بموجب قوانين حقوق الملكية الفكرية. يُحظر نسخ أو استخدام أي محتوى بدون إذن كتابي مسبق.</p>
+
+        <!-- 8. تعديل الشروط -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">8</span>
+          تعديل الشروط والأحكام
+        </h2>
+
+        <p>نحتفظ بحق تعديل هذه الشروط والأحكام في أي وقت. سيتم نشر التعديلات على هذه الصفحة مع تحديث تاريخ "آخر تحديث". الاستمرار في استخدام خدماتنا بعد أي تعديل يعني موافقتك على الشروط الجديدة.</p>
+
+        <!-- 9. القانون الحاكم -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">9</span>
+          القانون الحاكم وتسوية النزاعات
+        </h2>
+
+        <p>تخضع هذه الشروط والأحكام لقوانين المملكة العربية السعودية. أي نزاع ينشأ عن استخدام خدماتنا يتم حله ودياً في المقام الأول، وفي حالة عدم التوصل لاتفاق، يُحال للجهات القضائية المختصة في مدينة الرياض.</p>
+
+        <!-- Contact -->
+        <div class="bg-slate-100 p-6 rounded-xl mt-10">
+          <h3 class="text-xl font-bold text-slate-900 mb-4">للاستفسارات والشكاوى</h3>
+          <p class="m-0">إذا كان لديك أي أسئلة حول هذه الشروط والأحكام، يُرجى التواصل معنا:</p>
+          <div class="mt-4 space-y-2">
+            <p class="m-0"><strong>الهاتف:</strong> <a href={`tel:${company.phone}`} class="text-primary hover:underline">{company.phone}</a></p>
+            <p class="m-0"><strong>البريد الإلكتروني:</strong> <a href={`mailto:${company.email}`} class="text-primary hover:underline">{company.email}</a></p>
+            <p class="m-0"><strong>العنوان:</strong> {company.address}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">هل لديك أسئلة؟</h2>
+      <p class="text-blue-100 mb-8 max-w-xl mx-auto">فريق خدمة العملاء جاهز للإجابة على جميع استفساراتك</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

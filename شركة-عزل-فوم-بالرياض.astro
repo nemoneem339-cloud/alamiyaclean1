@@ -1,0 +1,612 @@
+---
+/**
+ * مقالة احترافية: شركة عزل فوم بالرياض - العالمية كلين
+ * =====================================================
+ * مقالة SEO وGEO محسّنة بشكل احترافي
+ */
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+import { blogPosts } from '../../data/blogPosts';
+
+const relatedPosts = blogPosts.slice(0, 3);
+
+// البيانات المنظمة للمقالة
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "شركة عزل فوم بالرياض 2024 | العالمية كلين - ضمان 10 سنوات",
+  "description": "أفضل شركة عزل فوم بالرياض. عزل أسطح وخزانات بالبولي يوريثان. توفير 40% من الكهرباء، ضمان 10 سنوات، أسعار تنافسية.",
+  "image": `${company.siteUrl}/images/service-foam.jpg`,
+  "author": {
+    "@type": "Organization",
+    "name": company.name,
+    "url": company.siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": company.name,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${company.siteUrl}/images/logo.png`
+    }
+  },
+  "datePublished": "2024-12-14",
+  "dateModified": "2024-12-14",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${company.siteUrl}/blog/شركة-عزل-فوم-بالرياض`
+  }
+};
+
+// HowTo Schema للعزل
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "كيفية عزل الأسطح بالفوم في الرياض",
+  "description": "خطوات عزل الأسطح بالفوم البولي يوريثان للحماية من الحرارة والرطوبة",
+  "totalTime": "PT4H",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "SAR",
+    "value": "25-45 ريال للمتر"
+  },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "المعاينة والتقييم",
+      "text": "زيارة الموقع وتقييم حالة السطح وتحديد نوع العزل المناسب"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "تنظيف السطح",
+      "text": "تنظيف السطح من الأتربة والأوساخ والشوائب"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "معالجة الشقوق",
+      "text": "سد جميع الشقوق والفتحات الموجودة"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "رش الفوم",
+      "text": "رش مادة الفوم البولي يوريثان بالسماكة المطلوبة"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "طبقة الحماية",
+      "text": "إضافة طبقة حماية من الأشعة فوق البنفسجية"
+    }
+  ]
+};
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ما هو العزل بالفوم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "العزل بالفوم هو استخدام مادة البولي يوريثان التي تُرش كسائل ثم تتمدد وتتصلب خلال ثوانٍ، لتكوين طبقة عازلة للحرارة والماء على الأسطح والخزانات."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كم يوفر العزل بالفوم من فاتورة الكهرباء؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "العزل بالفوم يوفر حتى 40% من فاتورة الكهرباء. إذا كانت فاتورتك الشهرية 2000 ريال، يمكنك توفير 800 ريال شهرياً أي 9600 ريال سنوياً."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي مدة ضمان العزل بالفوم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نقدم ضمان 10 سنوات على العزل بالفوم. العمر الافتراضي للفوم يتجاوز 25 سنة بدون الحاجة لصيانة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي سماكة طبقة الفوم المطلوبة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نوصي بسمك 3-5 سم للأسطح العادية، ويمكن زيادته حسب الحاجة والميزانية. للخزانات عادة 2-3 سم كافية."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كم سعر المتر المربع للعزل بالفوم؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يتراوح سعر المتر المربع بين 25-45 ريال حسب السماكة ونوع السطح. تواصل معنا للحصول على عرض سعر مجاني بناءً على معاينة الموقع."
+      }
+    }
+  ]
+};
+
+// LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": company.name,
+  "image": `${company.siteUrl}/images/logo.png`,
+  "telephone": company.phone,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "الرياض",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.7136,
+    "longitude": 46.6753
+  },
+  "url": company.siteUrl,
+  "priceRange": "$$",
+  "areaServed": { "@type": "City", "name": "الرياض" }
+};
+---
+
+<Base 
+  title="شركة عزل فوم بالرياض 2024 | العالمية كلين - ضمان 10 سنوات"
+  description="أفضل شركة عزل فوم بالرياض. عزل أسطح وخزانات بالبولي يوريثان. توفير 40% من الكهرباء، ضمان 10 سنوات، أسعار تنافسية. اتصل 0500801225"
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- ==================== ARTICLE HEADER ==================== -->
+  <section class="bg-slate-900 text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        
+        <span class="inline-block bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
+          عزل حراري ومائي
+        </span>
+        <h1 class="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight">
+          شركة عزل فوم بالرياض | العالمية كلين - ضمان 10 سنوات وتوفير 40% كهرباء
+        </h1>
+        
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-6 text-slate-300">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            فريق العالمية كلين
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            14 ديسمبر 2024
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            15 دقيقة قراءة
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Image -->
+  <div class="container mx-auto px-4 -mt-8 relative z-20">
+    <div class="max-w-4xl mx-auto">
+      <img src="/images/service-foam.jpg" alt="شركة عزل فوم بالرياض - العالمية كلين" class="w-full h-[400px] object-cover rounded-2xl shadow-2xl" />
+    </div>
+  </div>
+
+
+  <!-- ==================== ARTICLE CONTENT ==================== -->
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Social Share Buttons -->
+        <div class="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100">
+          <span class="text-sm font-bold text-slate-500">شارك المقال:</span>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('شركة عزل فوم بالرياض - العالمية كلين')}&url=${encodeURIComponent(company.siteUrl + '/blog/شركة-عزل-فوم-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          </a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(company.siteUrl + '/blog/شركة-عزل-فوم-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href={`https://wa.me/?text=${encodeURIComponent('شركة عزل فوم بالرياض - العالمية كلين ' + company.siteUrl + '/blog/شركة-عزل-فوم-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+          </a>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="bg-gradient-to-r from-orange-50 to-amber-50 border-r-4 border-orange-500 p-6 rounded-2xl mb-10">
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            ما ستتعلمه في هذا الدليل
+          </h2>
+          <ul class="space-y-2 text-slate-700">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>ما هو <strong>العزل بالفوم</strong> ولماذا هو الأفضل في الرياض</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>كيف يوفر العزل <strong>40% من فاتورة الكهرباء</strong></span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>أنواع العزل المتوفرة وأسعارها في الرياض</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>خطوات العمل والضمان المقدم من العالمية كلين</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg prose-slate max-w-none">
+          
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">مقدمة: لماذا العزل بالفوم ضرورة في الرياض؟</h2>
+          
+          <p class="text-slate-600 leading-relaxed mb-6">
+            مع ارتفاع درجات الحرارة في <strong>الرياض</strong> إلى أكثر من <strong>50 درجة مئوية</strong> صيفاً، يصبح العزل الحراري ضرورة وليس رفاهية. الأسطح غير المعزولة تمتص حرارة الشمس وتنقلها مباشرة إلى داخل المبنى، مما يضاعف الحمل على المكيفات ويرفع فاتورة الكهرباء بشكل كبير.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            <a href="/services/foam-insulation" class="text-primary font-bold hover:underline">العزل بالفوم البولي يوريثان</a> هو الحل الأمثل المعتمد عالمياً لحماية المباني من الحرارة الشديدة والرطوبة. في <strong>العالمية كلين</strong>، نقدم خدمة العزل بالفوم بأعلى المعايير مع <strong>ضمان 10 سنوات</strong>.
+          </p>
+
+          <!-- Stats Box -->
+          <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 p-6 rounded-2xl my-8 not-prose">
+            <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              مميزات العزل بالفوم
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">40%</div>
+                <div class="text-sm text-slate-600">توفير في الكهرباء</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">+25</div>
+                <div class="text-sm text-slate-600">سنة عمر افتراضي</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">150°</div>
+                <div class="text-sm text-slate-600">مقاومة للحرارة</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">10</div>
+                <div class="text-sm text-slate-600">سنوات ضمان</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">100%</div>
+                <div class="text-sm text-slate-600">عزل مائي</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl">
+                <div class="text-3xl font-bold text-green-600">0</div>
+                <div class="text-sm text-slate-600">صيانة مطلوبة</div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">ما هو الفوم العازل (البولي يوريثان)؟</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            <strong>الفوم العازل</strong> هو مادة البولي يوريثان التي تُرش كسائل ثم تتمدد وتتصلب خلال ثوانٍ معدودة. تتميز بقدرة عزل حراري ومائي عالية جداً، وهي الأفضل في المملكة العربية السعودية لعزل الأسطح والخزانات والجدران.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">مقارنة أنواع العزل المختلفة</h3>
+
+          <!-- Comparison Table -->
+          <div class="overflow-x-auto my-8 not-prose">
+            <table class="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+              <thead>
+                <tr class="bg-slate-100">
+                  <th class="p-4 text-right border font-bold">نوع العزل</th>
+                  <th class="p-4 text-center border font-bold">العمر الافتراضي</th>
+                  <th class="p-4 text-center border font-bold">العزل الحراري</th>
+                  <th class="p-4 text-center border font-bold">العزل المائي</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-green-50">
+                  <td class="p-4 border font-bold text-green-700">الفوم (بولي يوريثان)</td>
+                  <td class="p-4 text-center border">+25 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                  <td class="p-4 border">الرولات</td>
+                  <td class="p-4 text-center border">5-10 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-4 border">الصوف الصخري</td>
+                  <td class="p-4 text-center border">15-20 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">أنواع العزل بالفوم التي نقدمها</h2>
+
+          <!-- Services Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8 not-prose">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">عزل الأسطح</h3>
+              <p class="text-sm text-slate-600">رش الفوم على أسطح المباني لحمايتها من الحرارة والبرودة. السماكة المثالية 3-5 سم.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">عزل الخزانات</h3>
+              <p class="text-sm text-slate-600">عزل خزانات المياه من الداخل والخارج لمنع التسرب والحفاظ على برودة المياه.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">عزل الجدران</h3>
+              <p class="text-sm text-slate-600">حقن الفوم داخل تجاويف الجدران لعزل حراري ممتاز للمباني الجديدة والقائمة.</p>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خطوات عملنا في عزل الأسطح</h2>
+
+          <div class="space-y-4 my-8 not-prose">
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">1</span>
+              <div>
+                <h4 class="font-bold text-slate-900">المعاينة والتقييم</h4>
+                <p class="text-sm text-slate-600">زيارة الموقع وتقييم حالة السطح أو الخزان وتحديد نوع العزل المناسب.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">2</span>
+              <div>
+                <h4 class="font-bold text-slate-900">تنظيف السطح</h4>
+                <p class="text-sm text-slate-600">تنظيف السطح من الأتربة والأوساخ لضمان التصاق الفوم بشكل مثالي.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">3</span>
+              <div>
+                <h4 class="font-bold text-slate-900">معالجة الشقوق</h4>
+                <p class="text-sm text-slate-600">سد جميع الشقوق والفتحات الموجودة قبل الرش.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">4</span>
+              <div>
+                <h4 class="font-bold text-slate-900">رش الفوم</h4>
+                <p class="text-sm text-slate-600">رش مادة الفوم البولي يوريثان بالسماكة المطلوبة باستخدام معدات متخصصة.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">5</span>
+              <div>
+                <h4 class="font-bold text-slate-900">طبقة الحماية</h4>
+                <p class="text-sm text-slate-600">إضافة طبقة حماية من الأشعة فوق البنفسجية لإطالة عمر العزل.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calculator Box -->
+          <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 p-6 rounded-2xl my-10 not-prose">
+            <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              هل تعلم؟
+            </h3>
+            <p class="text-slate-700 mb-4">
+              العزل بالفوم يوفر <strong class="text-amber-700">40% من فاتورة الكهرباء</strong>!
+            </p>
+            <div class="bg-white p-4 rounded-xl">
+              <p class="text-sm text-slate-600">
+                <strong>مثال حسابي:</strong> إذا كانت فاتورتك الشهرية 2000 ريال، يمكنك توفير:
+              </p>
+              <ul class="mt-2 space-y-1 text-sm">
+                <li>💡 <strong>800 ريال شهرياً</strong></li>
+                <li>💡 <strong>9,600 ريال سنوياً</strong></li>
+                <li>💡 <strong>96,000 ريال خلال 10 سنوات</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">أسعار العزل بالفوم في الرياض 2024</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            تعتمد أسعار <strong>العزل بالفوم</strong> على عدة عوامل:
+          </p>
+
+          <ul class="space-y-2 text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>المساحة:</strong> كلما زادت المساحة انخفض سعر المتر</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>السماكة:</strong> 3 سم أو 4 سم أو 5 سم</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>نوع السطح:</strong> مستوي أو به عوائق</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>الموقع:</strong> سهولة الوصول للسطح</span>
+            </li>
+          </ul>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            للحصول على <strong>عرض سعر دقيق</strong>، تواصل معنا للمعاينة المجانية. فريقنا سيزور الموقع ويقدم لك عرض سعر مفصل بدون أي التزام.
+          </p>
+
+          <!-- CTA Box -->
+          <div class="bg-gradient-to-r from-orange-500 to-amber-600 p-8 rounded-2xl my-10 text-white not-prose">
+            <h3 class="text-2xl font-bold mb-4">احمِ منزلك الآن بالعزل بالفوم</h3>
+            <p class="text-orange-100 mb-6">معاينة مجانية + ضمان 10 سنوات + توفير 40% من الكهرباء</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-6 py-3 rounded-xl font-bold hover:bg-orange-50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+                اتصل الآن: {company.phone}
+              </a>
+              <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+                واتساب
+              </a>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الأسئلة الشائعة عن العزل بالفوم</h2>
+
+          <div class="space-y-4 my-8 not-prose">
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>ما هو العزل بالفوم؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                العزل بالفوم هو استخدام مادة البولي يوريثان التي تُرش كسائل ثم تتمدد وتتصلب خلال ثوانٍ، لتكوين طبقة عازلة للحرارة والماء.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>كم يوفر العزل بالفوم من فاتورة الكهرباء؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                العزل بالفوم يوفر حتى 40% من فاتورة الكهرباء. إذا كانت فاتورتك 2000 ريال شهرياً، توفر حوالي 800 ريال كل شهر.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>ما هي مدة ضمان العزل بالفوم؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نقدم ضمان 10 سنوات على العزل بالفوم. العمر الافتراضي للفوم يتجاوز 25 سنة بدون الحاجة لصيانة.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>ما هي السماكة المناسبة للفوم؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نوصي بسمك 3-5 سم للأسطح العادية. للمناطق شديدة الحرارة أو للخزانات، قد نوصي بسماكة أكبر.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>كم سعر المتر المربع للعزل بالفوم؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                يتراوح من 25-45 ريال للمتر حسب السماكة والمساحة. تواصل معنا للحصول على عرض سعر مجاني بناءً على معاينة الموقع.
+              </div>
+            </details>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الخلاصة</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            <strong>العزل بالفوم</strong> استثمار ذكي يعود عليك بتوفير كبير في فاتورة الكهرباء وحماية مبناك من الحرارة والرطوبة لأكثر من 25 سنة. مع <a href="/services/foam-insulation" class="text-primary font-bold hover:underline">العالمية كلين</a>، تحصل على:
+          </p>
+
+          <ul class="space-y-2 text-slate-700 mb-8">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>ضمان 10 سنوات على العزل</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>توفير حتى 40% من الكهرباء</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>معاينة وعرض سعر مجاني</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>فريق متخصص بخبرة +10 سنوات</span>
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- Author Box -->
+        <div class="bg-slate-50 p-6 rounded-2xl mt-12 flex items-start gap-4">
+          <img src="/images/logo.png" alt="شعار العالمية كلين" class="w-16 h-16 rounded-full object-contain shrink-0" />
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">فريق العالمية كلين</h4>
+            <p class="text-sm text-slate-500 mb-2">خبراء العزل والصيانة في الرياض منذ 2014</p>
+            <p class="text-sm text-slate-600">متخصصون في عزل الأسطح والخزانات بأحدث التقنيات ومواد العزل المعتمدة عالمياً.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Services -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمات ذات صلة</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/services/foam-insulation" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">عزل بالفوم</h3>
+            <p class="text-sm text-slate-500">عزل أسطح وخزانات بضمان 10 سنوات</p>
+          </a>
+          <a href="/services/water-tanks" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">تنظيف خزانات</h3>
+            <p class="text-sm text-slate-500">تنظيف وتعقيم وعزل الخزانات</p>
+          </a>
+          <a href="/services/cleaning-villas" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">تنظيف فلل</h3>
+            <p class="text-sm text-slate-500">خدمة VIP شاملة للفلل والقصور</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-orange-500 to-amber-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">جاهز لعزل منزلك؟</h2>
+      <p class="text-orange-100 mb-8 max-w-xl mx-auto">تواصل معنا الآن واحصل على معاينة مجانية وعرض سعر بدون التزام</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

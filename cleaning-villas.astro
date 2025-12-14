@@ -1,0 +1,305 @@
+---
+/**
+ * صفحة تنظيف الفلل والقصور
+ * ==========================
+ * 
+ * للتعديل: غيّر النصوص مباشرة في هذا الملف
+ * أو عدّل البيانات في src/data/siteInfo.ts
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+// الحصول على بيانات هذه الخدمة
+const service = services.find(s => s.slug === 'cleaning-villas');
+
+// خطوات الخدمة لـ HowTo Schema
+const howToSteps = [
+  { name: "الاتصال والحجز", text: "تواصل معنا عبر الهاتف أو الواتساب لحجز موعد مناسب" },
+  { name: "المعاينة المجانية", text: "يقوم فريقنا بزيارة الفيلا لتقييم حالتها وتحديد الخدمات المطلوبة" },
+  { name: "عرض السعر", text: "نقدم لك عرض سعر شامل ومفصل بدون التزام" },
+  { name: "تنفيذ العمل", text: "فريق متخصص ينفذ العمل بأعلى معايير الجودة باستخدام معدات إيطالية" },
+  { name: "الفحص والتسليم", text: "فحص نهائي شامل للتأكد من جودة العمل قبل التسليم" }
+];
+
+// أحياء الرياض
+const neighborhoods = [
+  { name: "النرجس", slug: "narjis" },
+  { name: "الياسمين", slug: "yasmin" },
+  { name: "الملقا", slug: "malqa" },
+  { name: "حطين", slug: "hittin" },
+  { name: "النخيل", slug: "nakhil" }
+];
+---
+
+<Base 
+  title="تنظيف فلل وقصور VIP" 
+  description="أفضل شركة تنظيف فلل بالرياض. خدمة VIP شاملة تشمل جلي الرخام، تعقيم بالبخار، وتنظيف المسابح. عمالة فلبينية محترفة."
+>
+
+  <!-- HowTo Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "كيف تحجز خدمة تنظيف فلل بالرياض",
+    "description": "خطوات بسيطة لحجز خدمة تنظيف فلل احترافية في الرياض",
+    "totalTime": "PT24H",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "SAR", "value": "500-5000" },
+    "step": howToSteps.map((step, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": step.name,
+      "text": step.text
+    }))
+  })} />
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden bg-slate-900">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+        alt="تنظيف فلل وقصور"
+        class="w-full h-full object-cover object-center opacity-60"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 py-20">
+      <!-- Breadcrumb -->
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-block bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-bold mb-4">
+          خدمة VIP
+        </span>
+        <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+          تنظيف فلل وقصور VIP
+        </h1>
+        <p class="text-xl text-slate-300 mb-8">
+          خدمة النخبة لتنظيف الفلل الجديدة والمفروشة بأحدث المعدات وعمالة فلبينية متخصصة.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors flex items-center justify-center gap-2">
+            احجز الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}`} target="_blank" class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-colors flex items-center justify-center gap-2">
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SERVICE DETAILS ==================== -->
+  <!-- للتعديل: غيّر النصوص هنا مباشرة -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-heading font-bold text-slate-900 mb-6">تفاصيل الخدمة</h2>
+          
+          <!-- للتعديل: غيّر هذا النص -->
+          <div class="prose prose-lg max-w-none text-slate-600">
+            <p>
+              نقدم في العالمية كلين خدمة "النظافة الشاملة VIP" للفلل والقصور في الرياض، المصممة خصيصاً للعملاء الذين يبحثون عن الكمال. نحن ندرك أن الفيلا ليست مجرد سكن، بل هي استثمار وواجهة اجتماعية.
+            </p>
+            
+            <h3 class="text-xl font-bold text-slate-900 mt-8 mb-4">خدماتنا تشمل التفاصيل التي يغفل عنها الآخرون:</h3>
+            
+            <ul class="space-y-3">
+              <li>
+                <strong>جلي وتلميع الرخام:</strong> نستخدم أقراص الألماس والكريستال الإيطالي لإعادة البريق للأرضيات الباهتة ومعالجة الفواصل.
+              </li>
+              <li>
+                <strong>التعقيم العميق:</strong> تطهير المطابخ والحمامات باستخدام بخار درجة حرارة 180 مئوية لقتل البكتيريا والفيروسات.
+              </li>
+              <li>
+                <strong>العناية بالثريات والتحف:</strong> تنظيف دقيق للكريستال والنجف المرتفع باستخدام رافعات خاصة.
+              </li>
+              <li>
+                <strong>تنظيف الواجهات والنوافذ:</strong> إزالة الغبار وآثار الأمطار من الزجاج الخارجي.
+              </li>
+            </ul>
+            
+            <p class="mt-6">
+              فريقنا يتكون من عمالة فلبينية وهندية مدربة على "إتيكيت" العمل في المنازل الراقية، مع إشراف مهندس جودة لضمان تسليم الفيلا كالجديدة تماماً.
+            </p>
+          </div>
+
+          <!-- Features -->
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">مميزات الخدمة</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {service?.features.map((feature) => (
+                <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-secondary shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                  <span class="font-medium text-slate-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Benefits -->
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">الفوائد</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {service?.benefits.map((benefit) => (
+                <div class="flex items-center gap-3 p-4 bg-green-50 rounded-xl">
+                  <span class="text-green-600">✓</span>
+                  <span class="font-medium text-slate-700">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          
+          <!-- Booking Card -->
+          <div class="bg-slate-900 text-white p-8 rounded-3xl sticky top-24">
+            <h3 class="text-2xl font-bold mb-4">احجز الآن</h3>
+            <p class="text-slate-400 mb-6">تواصل معنا للحصول على عرض سعر مخصص</p>
+            
+            <div class="space-y-4">
+              <a 
+                href={`tel:${company.phone}`}
+                class="w-full bg-white text-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                اتصل الآن
+              </a>
+              
+              <a 
+                href={`https://wa.me/${company.whatsapp}`}
+                target="_blank"
+                class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+                واتساب
+              </a>
+              
+              <a 
+                href="/contact"
+                class="w-full bg-secondary text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-cyan-600 transition-colors"
+              >
+                طلب عرض سعر
+              </a>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-slate-700">
+              <div class="flex items-center gap-3 text-sm text-slate-400">
+                <span>✓</span>
+                <span>ضمان على جودة العمل</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-400 mt-2">
+                <span>✓</span>
+                <span>عمالة مدربة ومؤمنة</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-400 mt-2">
+                <span>✓</span>
+                <span>مواد تنظيف عالمية</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-heading font-bold text-slate-900 text-center mb-12">أسئلة شائعة</h2>
+      
+      <div class="space-y-4">
+        {service?.faqs.map((faq) => (
+          <details class="group border border-slate-200 rounded-2xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+              <span>{faq.question}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 text-slate-400 group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+            </summary>
+            <div class="p-5 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== HOWTO STEPS ==================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-4">خطوات بسيطة</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">كيف تحجز خدمة تنظيف فلل؟</h2>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-6">
+          {howToSteps.map((step, index) => (
+            <div class="flex gap-6 items-start">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg">
+                {index + 1}
+              </div>
+              <div class="flex-1 bg-slate-50 p-6 rounded-2xl">
+                <h3 class="font-bold text-slate-900 text-lg mb-2">{step.name}</h3>
+                <p class="text-slate-600">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== NEIGHBORHOODS ==================== -->
+  <section class="py-20 bg-gradient-to-br from-slate-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">التغطية الجغرافية</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">نخدم جميع أحياء الرياض</h2>
+        <p class="text-slate-500 mt-4">اختر حيك للحصول على خدمة مخصصة</p>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+        {neighborhoods.map(n => (
+          <a href={`/services/cleaning-villas-${n.slug}`} class="group px-6 py-4 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-primary/30">
+            <span class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="font-bold text-slate-700 group-hover:text-primary">حي {n.name}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== OTHER SERVICES ==================== -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold text-slate-900 text-center mb-12">خدمات أخرى قد تهمك</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.filter(s => s.slug !== 'cleaning-villas').slice(0, 3).map((s) => (
+          <a href={`/services/${s.slug}`} class="bg-slate-50 p-6 rounded-2xl hover:shadow-lg transition-shadow group">
+            <div class="text-4xl mb-4" set:html={s.icon} />
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors mb-2">{s.title}</h3>
+            <p class="text-slate-500 text-sm">{s.shortDesc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

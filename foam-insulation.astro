@@ -1,0 +1,284 @@
+---
+/**
+ * صفحة خدمة عزل بالفوم بالرياض
+ * ================================
+ * SEO optimized service page
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const service = services.find(s => s.slug === 'foam-insulation');
+const otherServices = services.filter(s => s.slug !== 'foam-insulation').slice(0, 4);
+
+const pageTitle = "شركة عزل بالفوم بالرياض";
+const pageDescription = "أفضل شركة عزل فوم بالرياض - عزل أسطح وخزانات بالبولي يوريثان. توفير 40% من الكهرباء، ضمان 10 سنوات، أسعار تنافسية.";
+---
+
+<Base title={pageTitle} description={pageDescription}>
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": pageTitle,
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": company.name,
+      "telephone": `+${company.whatsapp}`,
+      "address": { "@type": "PostalAddress", "addressLocality": "الرياض", "addressCountry": "SA" }
+    },
+    "areaServed": { "@type": "City", "name": "الرياض" },
+    "serviceType": "Foam Insulation",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "SAR"
+    }
+  })} />
+
+  <!-- Hero Section -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-secondary/20 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ضمان 10 سنوات
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">{service?.shortDesc}</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+            اتصل الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-4">المميزات</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">لماذا العزل بالفوم؟</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl text-center border-2 border-blue-100">
+          <div class="text-4xl font-bold text-primary mb-2">40%</div>
+          <div class="font-medium text-slate-700">توفير في الكهرباء</div>
+        </div>
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl text-center border-2 border-green-100">
+          <div class="text-4xl font-bold text-green-600 mb-2">+25</div>
+          <div class="font-medium text-slate-700">سنة عمر افتراضي</div>
+        </div>
+        <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-2xl text-center border-2 border-orange-100">
+          <div class="text-4xl font-bold text-orange-600 mb-2">150°</div>
+          <div class="font-medium text-slate-700">مقاومة للحرارة</div>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-2xl text-center border-2 border-purple-100">
+          <div class="text-4xl font-bold text-purple-600 mb-2">10</div>
+          <div class="font-medium text-slate-700">سنوات ضمان</div>
+        </div>
+        <div class="bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded-2xl text-center border-2 border-rose-100">
+          <div class="text-4xl font-bold text-rose-600 mb-2">100%</div>
+          <div class="font-medium text-slate-700">عزل مائي</div>
+        </div>
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-2xl text-center border-2 border-teal-100">
+          <div class="text-4xl font-bold text-teal-600 mb-2">0</div>
+          <div class="font-medium text-slate-700">صيانة مطلوبة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of Insulation -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">أنواع العزل المتوفرة</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all">
+          <div class="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">عزل الأسطح</h3>
+          <p class="text-slate-600 leading-relaxed">رش الفوم على أسطح المباني لحمايتها من الحرارة الشديدة في الصيف والبرودة في الشتاء. السماكة المثالية 3-5 سم.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all">
+          <div class="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"/><path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"/><path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z"/><path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">عزل الخزانات</h3>
+          <p class="text-slate-600 leading-relaxed">عزل خزانات المياه من الداخل والخارج لمنع التسرب والحفاظ على برودة المياه. مادة آمنة صحياً.</p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all">
+          <div class="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">عزل الجدران</h3>
+          <p class="text-slate-600 leading-relaxed">حقن الفوم داخل تجاويف الجدران لعزل حراري ممتاز. مثالي للمباني الجديدة والقائمة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none text-slate-600">
+          <h2 class="text-3xl font-heading font-bold text-slate-900 mb-8">دليلك الشامل للعزل بالفوم في الرياض</h2>
+          
+          <p class="leading-relaxed mb-6">
+            مع ارتفاع درجات الحرارة في <strong>الرياض</strong> إلى أكثر من 50 درجة مئوية صيفاً، يصبح العزل الحراري ضرورة وليس رفاهية. <strong>العزل بالفوم</strong> (البولي يوريثان) هو الحل الأمثل لتوفير الطاقة وحماية المباني.
+          </p>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">ما هو الفوم العازل؟</h3>
+          <p class="leading-relaxed mb-6">
+            الفوم العازل هو مادة <strong>البولي يوريثان</strong> التي تُرش كسائل ثم تتمدد وتتصلب خلال ثوانٍ. تتميز بقدرة عزل حراري ومائي عالية جداً، وهي الأفضل في المملكة لعزل الأسطح والخزانات.
+          </p>
+          
+          <div class="bg-gradient-to-r from-amber-50 to-orange-50 border-r-4 border-amber-500 p-6 rounded-2xl my-8">
+            <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              هل تعلم؟
+            </h4>
+            <p class="text-slate-700">العزل بالفوم يوفر <strong>40% من فاتورة الكهرباء</strong>! إذا كانت فاتورتك الشهرية 2000 ريال، يمكنك توفير 800 ريال شهرياً أي 9600 ريال سنوياً!</p>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">خطوات العمل:</h3>
+          <ol class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">1</span>
+              <div><strong>المعاينة:</strong> زيارة الموقع وتقييم حالة السطح أو الخزان.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">2</span>
+              <div><strong>التنظيف:</strong> تنظيف السطح من الأتربة والأوساخ.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">3</span>
+              <div><strong>معالجة الشقوق:</strong> سد أي شقوق أو فتحات موجودة.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">4</span>
+              <div><strong>رش الفوم:</strong> رش مادة الفوم بالسماكة المطلوبة.</div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">5</span>
+              <div><strong>طبقة الحماية:</strong> إضافة طبقة حماية من الأشعة فوق البنفسجية.</div>
+            </li>
+          </ol>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">مقارنة أنواع العزل:</h3>
+          <div class="overflow-x-auto mb-8">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-slate-100">
+                  <th class="p-4 text-right border">نوع العزل</th>
+                  <th class="p-4 text-center border">العمر الافتراضي</th>
+                  <th class="p-4 text-center border">العزل الحراري</th>
+                  <th class="p-4 text-center border">العزل المائي</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-green-50">
+                  <td class="p-4 border font-bold text-green-700">الفوم (بولي يوريثان)</td>
+                  <td class="p-4 text-center border">+25 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐⭐</td>
+                </tr>
+                <tr>
+                  <td class="p-4 border">الرولات</td>
+                  <td class="p-4 text-center border">5-10 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐</td>
+                </tr>
+                <tr class="bg-slate-50">
+                  <td class="p-4 border">الصوف الصخري</td>
+                  <td class="p-4 text-center border">15-20 سنة</td>
+                  <td class="p-4 text-center border">⭐⭐⭐⭐</td>
+                  <td class="p-4 text-center border">⭐⭐</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">أسعار العزل بالفوم بالرياض</h3>
+          <p class="leading-relaxed">
+            تعتمد الأسعار على المساحة وسماكة الطبقة ونوع السطح. نقدم أسعاراً تنافسية مع ضمان 10 سنوات. تواصل معنا للحصول على <strong>معاينة وعرض سعر مجاني</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  {service?.faqs && service.faqs.length > 0 && (
+    <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-heading font-bold text-slate-900">أسئلة شائعة</h2>
+        </div>
+        <div class="space-y-4">
+          {service.faqs.map(faq => (
+            <details class="group border border-slate-200 rounded-2xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>{faq.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">احمِ منزلك الآن بالعزل بالفوم</h2>
+      <p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto">معاينة مجانية + ضمان 10 سنوات + توفير 40% من الكهرباء</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Services -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمات أخرى</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {otherServices.map(s => (
+          <a href={`/services/${s.slug}`} class="group bg-slate-50 p-6 rounded-2xl hover:shadow-lg transition-all text-center">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-primary" set:html={s.icon}></div>
+            <h3 class="font-bold text-slate-900 group-hover:text-primary text-sm">{s.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

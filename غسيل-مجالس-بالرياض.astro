@@ -1,0 +1,591 @@
+---
+/**
+ * مقالة احترافية: غسيل وتعقيم مجالس بالرياض - العالمية كلين
+ * =====================================================
+ * مقالة SEO وGEO محسّنة - كلمات: غسيل، تعقيم، تطهير
+ */
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+import { blogPosts } from '../../data/blogPosts';
+
+const relatedPosts = blogPosts.slice(0, 3);
+
+// البيانات المنظمة للمقالة
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "غسيل وتعقيم مجالس بالرياض 2024 | العالمية كلين - نظافة 100%",
+  "description": "أفضل شركة غسيل مجالس وكنب بالرياض. تعقيم وتطهير بالبخار، إزالة البقع والروائح، ضمان على الخدمة. اتصل الآن!",
+  "image": `${company.siteUrl}/images/service-sofa.jpg`,
+  "author": {
+    "@type": "Organization",
+    "name": company.name,
+    "url": company.siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": company.name,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${company.siteUrl}/images/logo.png`
+    }
+  },
+  "datePublished": "2024-12-14",
+  "dateModified": "2024-12-14",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${company.siteUrl}/blog/غسيل-مجالس-بالرياض`
+  },
+  "keywords": "غسيل مجالس بالرياض, تعقيم مجالس, تطهير كنب, شركة تنظيف مجالس, غسيل كنب بالبخار"
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "غسيل وتعقيم مجالس",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": company.name,
+    "telephone": company.phone,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "الرياض",
+      "addressCountry": "SA"
+    }
+  },
+  "areaServed": [
+    { "@type": "City", "name": "الرياض" },
+    { "@type": "AdministrativeArea", "name": "شمال الرياض" },
+    { "@type": "AdministrativeArea", "name": "حي الملقا" },
+    { "@type": "AdministrativeArea", "name": "حي النرجس" },
+    { "@type": "AdministrativeArea", "name": "حي الياسمين" },
+    { "@type": "AdministrativeArea", "name": "حي حطين" }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "priceRange": "$$",
+    "priceCurrency": "SAR"
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "كم سعر غسيل المجلس في الرياض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يبدأ سعر غسيل المجلس من 200 ريال ويختلف حسب الحجم ونوع القماش. تواصل معنا للحصول على عرض سعر مجاني بناءً على معاينة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل التعقيم بالبخار آمن على الأقمشة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، التعقيم بالبخار آمن تماماً على جميع أنواع الأقمشة. البخار يقتل 99.9% من البكتيريا والجراثيم بدون استخدام مواد كيميائية ضارة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كم يستغرق تجفيف المجلس بعد الغسيل؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بتقنية الغسيل الجاف، يكون المجلس جاهزاً للاستخدام خلال 2-4 ساعات فقط. نستخدم مكائن شفط قوية لتسريع التجفيف."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تزيلون البقع الصعبة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نتخصص في إزالة أصعب البقع مثل: الحبر، القهوة، العصير، الشوكولاتة، وبقع الأطفال. نسبة نجاحنا تتجاوز 95%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تقدمون خدمة في جميع أحياء الرياض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نغطي جميع أحياء الرياض خاصة: الملقا، النرجس، الياسمين، حطين، العقيق، الصحافة، القيروان، العارض، والنخيل."
+      }
+    }
+  ]
+};
+
+// LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": company.name,
+  "image": `${company.siteUrl}/images/logo.png`,
+  "telephone": company.phone,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "الرياض",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.7136,
+    "longitude": 46.6753
+  },
+  "url": company.siteUrl,
+  "priceRange": "$$",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "450"
+  }
+};
+---
+
+<Base 
+  title="غسيل وتعقيم مجالس بالرياض 2024 | العالمية كلين"
+  description="أفضل شركة غسيل مجالس وكنب بالرياض. تعقيم وتطهير بالبخار، إزالة البقع والروائح، تجفيف سريع. ضمان على الخدمة. اتصل 0500801225"
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- ==================== ARTICLE HEADER ==================== -->
+  <section class="bg-slate-900 text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        
+        <span class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
+          غسيل وتعقيم مجالس
+        </span>
+        <h1 class="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight">
+          غسيل وتعقيم وتطهير مجالس بالرياض | العالمية كلين - نظافة 100%
+        </h1>
+        
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-6 text-slate-300">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            فريق العالمية كلين
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            14 ديسمبر 2024
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            16 دقيقة قراءة
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Image -->
+  <div class="container mx-auto px-4 -mt-8 relative z-20">
+    <div class="max-w-4xl mx-auto">
+      <img src="/images/service-sofa.jpg" alt="غسيل وتعقيم مجالس بالرياض - العالمية كلين" class="w-full h-[400px] object-cover rounded-2xl shadow-2xl" />
+    </div>
+  </div>
+
+
+  <!-- ==================== ARTICLE CONTENT ==================== -->
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Social Share Buttons -->
+        <div class="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100">
+          <span class="text-sm font-bold text-slate-500">شارك المقال:</span>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('غسيل وتعقيم مجالس بالرياض - العالمية كلين')}&url=${encodeURIComponent(company.siteUrl + '/blog/غسيل-مجالس-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          </a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(company.siteUrl + '/blog/غسيل-مجالس-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href={`https://wa.me/?text=${encodeURIComponent('غسيل وتعقيم مجالس بالرياض - العالمية كلين ' + company.siteUrl + '/blog/غسيل-مجالس-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+          </a>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="bg-gradient-to-r from-primary/5 to-secondary/5 border-r-4 border-primary p-6 rounded-2xl mb-10">
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            ما ستتعلمه في هذا الدليل
+          </h2>
+          <ul class="space-y-2 text-slate-700">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>أفضل طرق <strong>غسيل المجالس والكنب</strong> بالرياض</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>أهمية <strong>التعقيم والتطهير</strong> لصحة عائلتك</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>أسعار <strong>غسيل المجالس</strong> في الرياض 2024</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>كيف تختار أفضل <strong>شركة تنظيف مجالس</strong></span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg prose-slate max-w-none">
+          
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">مقدمة: لماذا غسيل وتعقيم المجالس ضرورة صحية؟</h2>
+          
+          <p class="text-slate-600 leading-relaxed mb-6">
+            المجالس والكنب هي أكثر الأماكن استخداماً في المنزل السعودي. <strong>الجلسات اليومية، استقبال الضيوف، لعب الأطفال</strong> - كل هذا يجعل المجالس عرضة لتراكم الأوساخ والبكتيريا والعث والروائح الكريهة. في مناخ <strong>الرياض</strong> الحار والمغبر، تزداد الحاجة لـ <a href="/services/sofa-cleaning" class="text-primary font-bold hover:underline">غسيل وتعقيم المجالس</a> بشكل دوري.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            وفقاً للدراسات، الكنب والمجالس تحتوي على <strong>أكثر من 10,000 بكتيريا لكل سنتيمتر مربع</strong>! هذا يشمل البكتيريا المسببة للحساسية والأمراض الجلدية ومشاكل الجهاز التنفسي. لذلك، <strong>التعقيم والتطهير</strong> ليس رفاهية بل ضرورة لحماية صحة عائلتك.
+          </p>
+
+          <!-- Stats Box -->
+          <div class="bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20 p-6 rounded-2xl my-8 not-prose">
+            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              ما يختبئ في مجلسك!
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="text-center bg-white p-4 rounded-xl shadow-sm">
+                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><circle cx="12" cy="12" r="10"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+                </div>
+                <div class="text-sm text-slate-700 font-medium">بكتيريا وجراثيم</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl shadow-sm">
+                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-secondary/10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="text-sm text-slate-700 font-medium">عث الغبار</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl shadow-sm">
+                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-amber-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-600"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+                </div>
+                <div class="text-sm text-slate-700 font-medium">بقع وأوساخ</div>
+              </div>
+              <div class="text-center bg-white p-4 rounded-xl shadow-sm">
+                <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-slate-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+                </div>
+                <div class="text-sm text-slate-700 font-medium">روائح كريهة</div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خدماتنا في غسيل وتعقيم المجالس</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            في <strong>العالمية كلين</strong>، نقدم خدمة <strong>غسيل وتعقيم وتطهير المجالس</strong> الشاملة باستخدام أحدث التقنيات والمعدات:
+          </p>
+
+          <!-- Services Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 not-prose">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">غسيل بالبخار</h3>
+              <p class="text-sm text-slate-600">تنظيف عميق يزيل الأوساخ والبقع من الألياف الداخلية للقماش.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">تعقيم طبي</h3>
+              <p class="text-sm text-slate-600">تعقيم بمواد طبية تقتل 99.9% من البكتيريا والفيروسات.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">تطهير شامل</h3>
+              <p class="text-sm text-slate-600">تطهير من العث والحشرات الدقيقة المسببة للحساسية.</p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div class="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">إزالة الروائح</h3>
+              <p class="text-sm text-slate-600">إزالة جميع الروائح الكريهة وترك رائحة منعشة طويلة الأمد.</p>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">مناطق خدمتنا في الرياض</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نفتخر بتغطية جميع أحياء <strong>الرياض</strong> بخدمة <strong>غسيل وتعقيم المجالس</strong>. خدماتنا متوفرة في:
+          </p>
+
+          <!-- Areas Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-8 not-prose">
+            <a href="/areas/al-malqa" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الملقا</span>
+            </a>
+            <a href="/areas/al-nargis" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي النرجس</span>
+            </a>
+            <a href="/areas/al-yasmeen" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الياسمين</span>
+            </a>
+            <a href="/areas/hittin" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي حطين</span>
+            </a>
+            <a href="/areas/al-aqiq" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي العقيق</span>
+            </a>
+            <a href="/areas/al-sahafa" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الصحافة</span>
+            </a>
+            <a href="/areas/al-qairawan" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي القيروان</span>
+            </a>
+            <a href="/areas/al-arid" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي العارض</span>
+            </a>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خطوات غسيل وتعقيم المجالس</h2>
+
+          <div class="space-y-4 my-8 not-prose">
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">1</span>
+              <div>
+                <h4 class="font-bold text-slate-900">المعاينة والفحص</h4>
+                <p class="text-sm text-slate-600">نفحص نوع القماش ونحدد البقع والمشاكل الموجودة.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">2</span>
+              <div>
+                <h4 class="font-bold text-slate-900">شفط الغبار والأتربة</h4>
+                <p class="text-sm text-slate-600">نستخدم مكائن شفط قوية لإزالة الغبار والأوساخ السطحية.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">3</span>
+              <div>
+                <h4 class="font-bold text-slate-900">معالجة البقع</h4>
+                <p class="text-sm text-slate-600">نستخدم مواد متخصصة لإزالة البقع الصعبة قبل الغسيل.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">4</span>
+              <div>
+                <h4 class="font-bold text-slate-900">الغسيل العميق</h4>
+                <p class="text-sm text-slate-600">غسيل بالبخار أو الرغوة الجافة حسب نوع القماش.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">5</span>
+              <div>
+                <h4 class="font-bold text-slate-900">التعقيم والتطهير</h4>
+                <p class="text-sm text-slate-600">تعقيم بمواد طبية آمنة تقتل 99.9% من الجراثيم.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+              <span class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold shrink-0">6</span>
+              <div>
+                <h4 class="font-bold text-slate-900">التجفيف السريع</h4>
+                <p class="text-sm text-slate-600">تجفيف بمكائن متخصصة، المجلس جاهز خلال 2-4 ساعات.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Box -->
+          <div class="bg-gradient-to-r from-primary to-blue-700 p-8 rounded-2xl my-10 text-white not-prose">
+            <h3 class="text-2xl font-bold mb-4">جدد مجلسك الآن! 🌟</h3>
+            <p class="text-blue-100 mb-6">غسيل + تعقيم + تطهير = مجلس نظيف وآمن لعائلتك</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+                اتصل الآن: {company.phone}
+              </a>
+              <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+                واتساب
+              </a>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">أسعار غسيل المجالس في الرياض 2024</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            أسعارنا تنافسية وتعتمد على:
+          </p>
+
+          <ul class="space-y-2 text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>حجم المجلس:</strong> عدد المقاعد والمتر المربع</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>نوع القماش:</strong> قماش عادي، مخمل، جلد، إلخ</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>حالة التلوث:</strong> بقع خفيفة أو صعبة</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary"><path d="m5 12 5 5L20 7"/></svg>
+              <span><strong>الخدمات المطلوبة:</strong> غسيل فقط أم غسيل + تعقيم + تطهير</span>
+            </li>
+          </ul>
+
+          <div class="bg-green-50 border border-green-200 p-6 rounded-2xl my-8 not-prose">
+            <h4 class="font-bold text-green-800 mb-3">💰 للحصول على سعر دقيق:</h4>
+            <p class="text-green-700">تواصل معنا للمعاينة المجانية. فريقنا سيزور موقعك ويقدم عرض سعر مفصل بدون أي التزام.</p>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الأسئلة الشائعة</h2>
+
+          <div class="space-y-4 my-8 not-prose">
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>كم سعر غسيل المجلس في الرياض؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                يبدأ سعر غسيل المجلس من 200 ريال ويختلف حسب الحجم ونوع القماش. تواصل معنا للحصول على عرض سعر مجاني.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>هل التعقيم بالبخار آمن على الأقمشة؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نعم، التعقيم بالبخار آمن تماماً على جميع أنواع الأقمشة. البخار يقتل 99.9% من البكتيريا بدون مواد كيميائية.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>كم يستغرق تجفيف المجلس؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                بتقنية الغسيل الجاف، المجلس جاهز للاستخدام خلال 2-4 ساعات فقط.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>هل تزيلون البقع الصعبة؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نعم، نتخصص في إزالة بقع: الحبر، القهوة، العصير، الشوكولاتة، وبقع الأطفال. نسبة نجاحنا 95%.
+              </div>
+            </details>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الخلاصة</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            <strong>غسيل وتعقيم وتطهير المجالس</strong> خدمة أساسية لحماية صحة عائلتك والحفاظ على جمال منزلك. مع <a href="/services/sofa-cleaning" class="text-primary font-bold hover:underline">العالمية كلين</a>، تحصل على:
+          </p>
+
+          <ul class="space-y-2 text-slate-700 mb-8">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>غسيل عميق يزيل الأوساخ من الألياف</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>تعقيم طبي يقتل 99.9% من البكتيريا</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>تطهير من العث والحشرات الدقيقة</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>تجفيف سريع خلال 2-4 ساعات</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>ضمان على الخدمة</span>
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- Author Box -->
+        <div class="bg-slate-50 p-6 rounded-2xl mt-12 flex items-start gap-4">
+          <img src="/images/logo.png" alt="شعار العالمية كلين" class="w-16 h-16 rounded-full object-contain shrink-0" />
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">فريق العالمية كلين</h4>
+            <p class="text-sm text-slate-500 mb-2">خبراء غسيل وتعقيم المجالس في الرياض منذ 2014</p>
+            <p class="text-sm text-slate-600">متخصصون في غسيل وتعقيم وتطهير المجالس والكنب بأحدث التقنيات ومعدات البخار الإيطالية.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Services -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمات ذات صلة</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/services/sofa-cleaning" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">غسيل كنب ومجالس</h3>
+            <p class="text-sm text-slate-500">خدمة غسيل وتعقيم شاملة</p>
+          </a>
+          <a href="/services/cleaning-villas" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">تنظيف فلل</h3>
+            <p class="text-sm text-slate-500">خدمة VIP شاملة للفلل</p>
+          </a>
+          <a href="/services/pest-control" class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">مكافحة الحشرات</h3>
+            <p class="text-sm text-slate-500">إبادة تامة مع ضمان</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">مجلسك يستاهل الأفضل! 🌟</h2>
+      <p class="text-blue-100 mb-8 max-w-xl mx-auto">غسيل + تعقيم + تطهير = صحة وراحة لعائلتك</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

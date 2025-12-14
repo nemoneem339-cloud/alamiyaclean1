@@ -1,0 +1,537 @@
+---
+/**
+ * مقالة احترافية: أفضل شركة تنظيف بالرياض - العالمية كلين
+ * =====================================================
+ * مقالة SEO وGEO محسّنة بشكل احترافي
+ */
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find(p => p.slug === 'افضل-شركة-تنظيف-بالرياض') || blogPosts[0];
+const relatedPosts = blogPosts.filter(p => p.id !== post.id).slice(0, 3);
+
+// البيانات المنظمة للمقالة
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "أفضل شركة تنظيف بالرياض 2024 | العالمية كلين - خدمات شاملة ومعتمدة",
+  "description": "دليلك الشامل لاختيار أفضل شركة تنظيف بالرياض. تعرف على خدمات العالمية كلين لتنظيف المنازل والفلل والشقق والمكاتب ومكافحة الحشرات.",
+  "image": `${company.siteUrl}/images/hero-home.jpg`,
+  "author": {
+    "@type": "Organization",
+    "name": company.name,
+    "url": company.siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": company.name,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${company.siteUrl}/images/logo.png`
+    }
+  },
+  "datePublished": "2024-12-14",
+  "dateModified": "2024-12-14",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${company.siteUrl}/blog/افضل-شركة-تنظيف-بالرياض`
+  }
+};
+
+// بيانات الشركة المحلية (Local Business Schema)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": company.name,
+  "image": `${company.siteUrl}/images/logo.png`,
+  "telephone": company.phone,
+  "email": company.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": company.address,
+    "addressLocality": "الرياض",
+    "addressRegion": "منطقة الرياض",
+    "postalCode": "12345",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 24.7136,
+    "longitude": 46.6753
+  },
+  "url": company.siteUrl,
+  "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "الرياض" },
+    { "@type": "AdministrativeArea", "name": "شمال الرياض" },
+    { "@type": "AdministrativeArea", "name": "حي الملقا" },
+    { "@type": "AdministrativeArea", "name": "حي النرجس" },
+    { "@type": "AdministrativeArea", "name": "حي الياسمين" },
+    { "@type": "AdministrativeArea", "name": "حي حطين" },
+    { "@type": "AdministrativeArea", "name": "حي العقيق" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "500"
+  }
+};
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ما هي أفضل شركة تنظيف بالرياض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "شركة العالمية كلين تُعد من أفضل شركات التنظيف بالرياض بخبرة تزيد عن 10 سنوات، وفريق عمل محترف، ومعدات حديثة إيطالية وألمانية، وضمان على جميع الخدمات."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كم تكلفة تنظيف الفيلا في الرياض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "تختلف التكلفة حسب المساحة ونوع التنظيف المطلوب. في العالمية كلين نقدم عروض أسعار مجانية ومعاينة بدون التزام. تواصل معنا على 0500801225."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تقدمون خدمات في جميع أحياء الرياض؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نغطي جميع أحياء الرياض وخاصة شمال الرياض: الملقا، النرجس، الياسمين، حطين، العقيق، الصحافة، القيروان، العارض، والنخيل."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي أنواع الخدمات التي تقدمونها؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نقدم خدمات شاملة: تنظيف فلل وقصور، تنظيف شقق ومنازل، تنظيف مكاتب وشركات، مكافحة حشرات، غسيل مكيفات، تنظيف خزانات، جلي رخام، وغسيل كنب ومجالس."
+      }
+    }
+  ]
+};
+---
+
+<Base 
+  title="أفضل شركة تنظيف بالرياض 2024 | العالمية كلين"
+  description="العالمية كلين أفضل شركة تنظيف بالرياض. خدمات تنظيف منازل، فلل، شقق، مكاتب، ومكافحة حشرات. عمالة مدربة، معدات حديثة، ضمان ذهبي. اتصل 0500801225"
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ==================== ARTICLE HEADER ==================== -->
+  <section class="bg-slate-900 text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        
+        <span class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
+          دليل شامل 2024
+        </span>
+        <h1 class="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight">
+          أفضل شركة تنظيف بالرياض | العالمية كلين - خدمات شاملة ومعتمدة
+        </h1>
+        
+        <!-- Meta -->
+        <div class="flex flex-wrap items-center gap-6 text-slate-300">
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            فريق العالمية كلين
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            14 ديسمبر 2024
+          </span>
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            18 دقيقة قراءة
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Image -->
+  <div class="container mx-auto px-4 -mt-8 relative z-20">
+    <div class="max-w-4xl mx-auto">
+      <img src="/images/hero-home.jpg" alt="أفضل شركة تنظيف بالرياض - العالمية كلين" class="w-full h-[400px] object-cover rounded-2xl shadow-2xl" />
+    </div>
+  </div>
+
+
+  <!-- ==================== ARTICLE CONTENT ==================== -->
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Social Share Buttons -->
+        <div class="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100">
+          <span class="text-sm font-bold text-slate-500">شارك المقال:</span>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('أفضل شركة تنظيف بالرياض - العالمية كلين')}&url=${encodeURIComponent(company.siteUrl + '/blog/افضل-شركة-تنظيف-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          </a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(company.siteUrl + '/blog/افضل-شركة-تنظيف-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href={`https://wa.me/?text=${encodeURIComponent('أفضل شركة تنظيف بالرياض - العالمية كلين ' + company.siteUrl + '/blog/افضل-شركة-تنظيف-بالرياض')}`} target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+          </a>
+        </div>
+
+        <!-- Summary Box (الخلاصة) -->
+        <div class="bg-gradient-to-r from-primary/5 to-secondary/5 border-r-4 border-primary p-6 rounded-2xl mb-10">
+          <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+            الخلاصة - ما ستتعلمه في هذا الدليل
+          </h2>
+          <ul class="space-y-2 text-slate-700">
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>كيف تختار <strong>أفضل شركة تنظيف بالرياض</strong> بناءً على معايير واضحة</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>خدمات <strong>العالمية كلين</strong> الشاملة في الرياض وجميع أحيائها</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>مميزات التعامل مع شركة تنظيف معتمدة ومرخصة</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>أسعار خدمات التنظيف ومكافحة الحشرات في الرياض</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg prose-slate max-w-none">
+          
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">مقدمة: لماذا تحتاج شركة تنظيف احترافية في الرياض؟</h2>
+          
+          <p class="text-slate-600 leading-relaxed mb-6">
+            مدينة <strong>الرياض</strong>، عاصمة المملكة العربية السعودية، تتميز بمناخها الصحراوي الجاف الذي يجلب معه كميات كبيرة من <strong>الغبار والأتربة</strong> طوال العام. هذا الوضع يجعل الحفاظ على نظافة المنازل والفلل والمكاتب تحدياً حقيقياً يتطلب جهداً مستمراً ومعدات متخصصة.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            وفقاً للإحصائيات، يقضي المواطن السعودي في المتوسط <strong>15 ساعة أسبوعياً</strong> في أعمال التنظيف المنزلية. هذا الوقت الثمين يمكن استثماره بشكل أفضل مع العائلة أو في العمل، وهنا يأتي دور <a href="/" class="text-primary font-bold hover:underline">شركة العالمية كلين للتنظيف بالرياض</a>.
+          </p>
+
+          <!-- Trust Signals Box -->
+          <div class="bg-green-50 border border-green-200 p-6 rounded-2xl my-8">
+            <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              لماذا العالمية كلين؟
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">+10</div>
+                <div class="text-sm text-slate-600">سنوات خبرة</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">+5000</div>
+                <div class="text-sm text-slate-600">عميل سعيد</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">+50</div>
+                <div class="text-sm text-slate-600">فني محترف</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">24/7</div>
+                <div class="text-sm text-slate-600">خدمة متواصلة</div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خدماتنا الشاملة في الرياض</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نقدم في <strong>العالمية كلين</strong> باقة متكاملة من خدمات التنظيف والصيانة تغطي جميع احتياجاتك:
+          </p>
+
+          <!-- Services Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8 not-prose">
+            <a href="/services/cleaning-villas" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">تنظيف فلل وقصور VIP</h3>
+                <p class="text-sm text-slate-500">خدمة النخبة بمعايير فندقية، جلي رخام، تلميع ثريات</p>
+              </div>
+            </a>
+            
+            <a href="/services/home-cleaning" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">تنظيف منازل وشقق</h3>
+                <p class="text-sm text-slate-500">تنظيف عميق لجميع أركان المنزل</p>
+              </div>
+            </a>
+            
+            <a href="/services/pest-control" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">مكافحة الحشرات</h3>
+                <p class="text-sm text-slate-500">إبادة تامة مع ضمان، مبيدات بدون رائحة</p>
+              </div>
+            </a>
+            
+            <a href="/services/ac-cleaning" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">غسيل مكيفات</h3>
+                <p class="text-sm text-slate-500">غسيل وتعقيم بالموقع، توفير 30% كهرباء</p>
+              </div>
+            </a>
+            
+            <a href="/services/water-tanks" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">تنظيف وعزل خزانات</h3>
+                <p class="text-sm text-slate-500">تعقيم وعزل بمواد معتمدة من البلدية</p>
+              </div>
+            </a>
+            
+            <a href="/services/sofa-cleaning" class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+              <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900">غسيل كنب ومجالس</h3>
+                <p class="text-sm text-slate-500">إزالة أصعب البقع، تجفيف سريع</p>
+              </div>
+            </a>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">مناطق خدمتنا في الرياض</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نفتخر بتغطية جميع أحياء الرياض بخدماتنا المتميزة، مع التركيز بشكل خاص على <strong>شمال الرياض</strong> حيث نقدم خدمات متخصصة في:
+          </p>
+
+          <!-- Areas Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 my-8 not-prose">
+            <a href="/areas/al-malqa" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الملقا</span>
+            </a>
+            <a href="/areas/al-nargis" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي النرجس</span>
+            </a>
+            <a href="/areas/al-yasmeen" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الياسمين</span>
+            </a>
+            <a href="/areas/hittin" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي حطين</span>
+            </a>
+            <a href="/areas/al-aqiq" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي العقيق</span>
+            </a>
+            <a href="/areas/al-sahafa" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي الصحافة</span>
+            </a>
+            <a href="/areas/al-qairawan" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي القيروان</span>
+            </a>
+            <a href="/areas/al-arid" class="block p-4 bg-slate-50 rounded-xl text-center hover:bg-primary hover:text-white transition-colors">
+              <span class="font-bold">حي العارض</span>
+            </a>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">لماذا العالمية كلين أفضل شركة تنظيف بالرياض؟</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نتميز عن غيرنا بمجموعة من العوامل التي جعلتنا الخيار الأول لآلاف العملاء في الرياض:
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">1. خبرة تتجاوز 10 سنوات</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            منذ تأسيسنا في عام 2014، قمنا بخدمة أكثر من <strong>5000 عميل</strong> وتنفيذ أكثر من <strong>15000 مشروع تنظيف</strong> ناجح في جميع أنحاء الرياض. هذه الخبرة الطويلة علمتنا كيف نتعامل مع جميع أنواع تحديات التنظيف.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">2. معدات إيطالية وألمانية حديثة</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نستخدم أحدث المعدات من علامات تجارية عالمية مثل <strong>Karcher</strong> الألمانية و<strong>Levigatrici</strong> الإيطالية. هذه المعدات تضمن نتائج احترافية لا يمكن تحقيقها بالأدوات التقليدية.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">3. فريق عمل مدرب ومحترف</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            يضم فريقنا أكثر من <strong>50 فني وعامل</strong> مدربين على أعلى المستويات. جميعهم يخضعون لفحص خلفية شامل ويحملون بطاقات هوية رسمية. العمالة متعددة الجنسيات (فلبينية، هندية، بنغالية) لضمان التواصل الفعال مع جميع العملاء.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">4. ضمان ذهبي على الخدمة</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نقدم ضمان على جميع خدماتنا. إذا لم تكن راضياً عن النتيجة، نعود مجاناً لإعادة العمل. رضا العميل هو أولويتنا القصوى.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">5. مواد آمنة ومعتمدة</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            جميع مواد التنظيف والتعقيم التي نستخدمها <strong>آمنة تماماً على الأطفال والحيوانات الأليفة</strong>، ومعتمدة من الجهات الصحية المختصة في المملكة.
+          </p>
+
+          <!-- CTA Box -->
+          <div class="bg-gradient-to-r from-primary to-blue-700 p-8 rounded-2xl my-10 text-white not-prose">
+            <h3 class="text-2xl font-bold mb-4">جاهز لتجربة الفرق؟</h3>
+            <p class="text-blue-100 mb-6">احصل على معاينة مجانية وعرض سعر بدون التزام. فريقنا جاهز لخدمتك 24/7.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+                اتصل الآن: {company.phone}
+              </a>
+              <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-green-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+                واتساب
+              </a>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الأسئلة الشائعة</h2>
+
+          <div class="space-y-4 my-8 not-prose">
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>ما هي أفضل شركة تنظيف بالرياض؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                شركة العالمية كلين تُعد من أفضل شركات التنظيف بالرياض بخبرة تزيد عن 10 سنوات، وفريق عمل محترف، ومعدات حديثة إيطالية وألمانية، وضمان على جميع الخدمات.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>كم تكلفة تنظيف الفيلا في الرياض؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                تختلف التكلفة حسب المساحة ونوع التنظيف المطلوب. في العالمية كلين نقدم عروض أسعار مجانية ومعاينة بدون التزام. تواصل معنا على 0500801225.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>هل تقدمون خدمات في جميع أحياء الرياض؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نعم، نغطي جميع أحياء الرياض وخاصة شمال الرياض: الملقا، النرجس، الياسمين، حطين، العقيق، الصحافة، القيروان، العارض، والنخيل.
+              </div>
+            </details>
+
+            <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>هل المبيدات المستخدمة آمنة؟</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 border-t border-slate-100">
+                نعم، نستخدم مبيدات بدون رائحة وآمنة على الأطفال والحيوانات الأليفة. جميع موادنا معتمدة من وزارة الصحة والبلدية.
+              </div>
+            </details>
+          </div>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الخلاصة</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            اختيار <strong>شركة تنظيف موثوقة بالرياض</strong> قرار مهم يؤثر على صحة عائلتك وجمال منزلك. مع <a href="/" class="text-primary font-bold hover:underline">العالمية كلين</a>، تحصل على:
+          </p>
+
+          <ul class="space-y-2 text-slate-700 mb-8">
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>خبرة +10 سنوات في سوق الرياض</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>فريق محترف من +50 فني</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>معدات إيطالية وألمانية حديثة</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>ضمان ذهبي على جميع الخدمات</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+              <span>خدمة 24 ساعة جميع أيام الأسبوع</span>
+            </li>
+          </ul>
+
+          <p class="text-slate-600 leading-relaxed">
+            لا تتردد في التواصل معنا اليوم للحصول على <strong>معاينة مجانية</strong> وعرض سعر مخصص لاحتياجاتك. فريقنا جاهز لخدمتك!
+          </p>
+
+        </div>
+
+        <!-- Author Box -->
+        <div class="bg-slate-50 p-6 rounded-2xl mt-12 flex items-start gap-4">
+          <img src="/images/logo.png" alt="شعار العالمية كلين" class="w-16 h-16 rounded-full object-contain shrink-0" />
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">فريق العالمية كلين</h4>
+            <p class="text-sm text-slate-500 mb-2">خبراء التنظيف والصيانة في الرياض منذ 2014</p>
+            <p class="text-sm text-slate-600">نسعى لتقديم محتوى مفيد يساعدك في الحفاظ على منزلك نظيفاً وصحياً. تابعنا للمزيد من النصائح والإرشادات.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Services -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمات ذات صلة</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.slice(0, 3).map((service) => (
+            <a href={`/services/${service.slug}`} class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow group">
+              <div class="text-4xl mb-4" set:html={service.icon}></div>
+              <h3 class="font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
+              <p class="text-sm text-slate-500">{service.shortDesc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">جاهز للبداية؟</h2>
+      <p class="text-blue-100 mb-8 max-w-xl mx-auto">تواصل معنا الآن واحصل على عرض سعر مجاني ومعاينة بدون التزام</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

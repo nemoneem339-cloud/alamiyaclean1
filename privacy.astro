@@ -1,0 +1,214 @@
+---
+/**
+ * صفحة سياسة الخصوصية
+ * ====================
+ * سياسة الخصوصية وحماية البيانات الشخصية لشركة العالمية كلين
+ */
+
+import Base from '../layouts/Base.astro';
+import { company } from '../data/siteInfo';
+
+const lastUpdated = "12 ديسمبر 2024";
+---
+
+<Base 
+  title="سياسة الخصوصية" 
+  description="سياسة الخصوصية وحماية البيانات الشخصية لشركة العالمية كلين. نحن ملتزمون بحماية خصوصيتك وبياناتك الشخصية."
+>
+
+  <!-- Header -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">سياسة الخصوصية</h1>
+      <p class="text-slate-400">آخر تحديث: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      
+      <div class="prose prose-lg max-w-none text-slate-700">
+        
+        <!-- Introduction -->
+        <div class="bg-primary/5 border-r-4 border-primary p-6 rounded-lg mb-10">
+          <p class="text-slate-900 font-medium m-0">
+            في <strong>{company.name}</strong>، نحن ملتزمون بحماية خصوصيتك وبياناتك الشخصية. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك عند استخدام موقعنا وخدماتنا.
+          </p>
+        </div>
+
+        <!-- 1. المعلومات التي نجمعها -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+          المعلومات التي نجمعها
+        </h2>
+        
+        <p>عند استخدامك لموقعنا أو طلب خدماتنا، قد نجمع المعلومات التالية:</p>
+        
+        <div class="bg-slate-50 p-6 rounded-xl my-6">
+          <h4 class="font-bold text-slate-900 mb-3">المعلومات التي تقدمها مباشرة:</h4>
+          <ul class="space-y-2 m-0">
+            <li>الاسم الكامل</li>
+            <li>رقم الجوال</li>
+            <li>البريد الإلكتروني (إن تم تقديمه)</li>
+            <li>العنوان أو موقع الخدمة</li>
+            <li>تفاصيل طلب الخدمة</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-xl my-6">
+          <h4 class="font-bold text-slate-900 mb-3">المعلومات التي تُجمع تلقائياً:</h4>
+          <ul class="space-y-2 m-0">
+            <li>عنوان IP</li>
+            <li>نوع المتصفح والجهاز</li>
+            <li>الصفحات التي تمت زيارتها</li>
+            <li>وقت ومدة الزيارة</li>
+          </ul>
+        </div>
+
+        <!-- 2. كيف نستخدم بياناتك -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+          كيف نستخدم بياناتك
+        </h2>
+        
+        <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+        
+        <ul class="space-y-3">
+          <li><strong>تقديم الخدمة:</strong> معالجة طلباتك وتنسيق مواعيد الخدمة</li>
+          <li><strong>التواصل:</strong> الرد على استفساراتك وإرسال تأكيدات الحجز</li>
+          <li><strong>التحسين:</strong> تطوير موقعنا وخدماتنا بناءً على تجربتك</li>
+          <li><strong>التسويق:</strong> إرسال العروض والتحديثات (بموافقتك فقط)</li>
+        </ul>
+
+        <!-- 3. مشاركة البيانات -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+          مشاركة البيانات
+        </h2>
+        
+        <p><strong>لا نبيع</strong> بياناتك الشخصية لأي طرف ثالث. قد نشارك معلوماتك فقط في الحالات التالية:</p>
+        
+        <ul class="space-y-3">
+          <li>مع فريق العمل لأداء الخدمة المطلوبة</li>
+          <li>عند الضرورة للامتثال لأنظمة المملكة العربية السعودية</li>
+          <li>لحماية حقوقنا القانونية</li>
+        </ul>
+
+        <!-- 4. حماية البيانات -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">4</span>
+          حماية البيانات
+        </h2>
+        
+        <p>نتخذ إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الإفصاح، بما في ذلك:</p>
+        
+        <ul class="space-y-3">
+          <li>تشفير البيانات أثناء النقل (SSL/HTTPS)</li>
+          <li>تقييد الوصول للموظفين المخولين فقط</li>
+          <li>مراجعات أمنية دورية</li>
+        </ul>
+
+        <!-- 5. ملفات تعريف الارتباط -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">5</span>
+          ملفات تعريف الارتباط (Cookies)
+        </h2>
+        
+        <p>نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح. يمكنك التحكم في إعدادات ملفات تعريف الارتباط من خلال متصفحك، لكن تعطيلها قد يؤثر على بعض وظائف الموقع.</p>
+
+        <!-- 6. حقوقك -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">6</span>
+          حقوقك
+        </h2>
+        
+        <p>وفقاً لنظام حماية البيانات الشخصية السعودي، لديك الحق في:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+          <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+            <span class="text-green-600 font-bold">✓ الوصول</span>
+            <p class="text-sm text-slate-600 m-0 mt-1">طلب نسخة من بياناتك الشخصية</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+            <span class="text-green-600 font-bold">✓ التصحيح</span>
+            <p class="text-sm text-slate-600 m-0 mt-1">تصحيح أي معلومات غير دقيقة</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+            <span class="text-green-600 font-bold">✓ الحذف</span>
+            <p class="text-sm text-slate-600 m-0 mt-1">طلب حذف بياناتك</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+            <span class="text-green-600 font-bold">✓ الاعتراض</span>
+            <p class="text-sm text-slate-600 m-0 mt-1">الاعتراض على معالجة بياناتك</p>
+          </div>
+        </div>
+
+        <!-- 7. الاحتفاظ بالبيانات -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">7</span>
+          الاحتفاظ بالبيانات
+        </h2>
+        
+        <p>نحتفظ ببياناتك الشخصية فقط طالما كان ذلك ضرورياً لتحقيق الأغراض المذكورة في هذه السياسة، أو كما يقتضي القانون.</p>
+
+        <!-- 8. تحديث السياسة -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">8</span>
+          تحديث السياسة
+        </h2>
+        
+        <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ "آخر تحديث".</p>
+
+        <!-- 9. تواصل معنا -->
+        <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4 flex items-center gap-3">
+          <span class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-sm font-bold">9</span>
+          تواصل معنا
+        </h2>
+        
+        <p>إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو ترغب في ممارسة حقوقك، تواصل معنا:</p>
+        
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl my-6 not-prose">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Phone -->
+            <a href={`tel:${company.phone}`} class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
+              <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span class="text-slate-400 text-xs block">اتصل بنا</span>
+                <span class="font-bold text-lg" dir="ltr">{company.phone}</span>
+              </div>
+            </a>
+            
+            <!-- WhatsApp -->
+            <a href={`https://wa.me/${company.whatsapp}`} target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
+              <div class="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+              </div>
+              <div>
+                <span class="text-slate-400 text-xs block">واتساب</span>
+                <span class="font-bold text-lg">تواصل الآن</span>
+              </div>
+            </a>
+            
+            <!-- Email -->
+            <a href={`mailto:${company.email}`} class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors">
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              </div>
+              <div>
+                <span class="text-slate-400 text-xs block">البريد الإلكتروني</span>
+                <span class="font-bold text-sm">{company.email}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,224 @@
+---
+/**
+ * صفحة تنظيف خزانات حي النرجس
+ * ============================
+ * Local SEO optimized page
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const neighborhood = "النرجس";
+const neighborhoodEn = "narjis";
+const service = services.find(s => s.slug === 'water-tanks');
+
+const pageTitle = `شركة تنظيف خزانات حي ${neighborhood} بالرياض`;
+const pageDescription = `أفضل شركة تنظيف خزانات في حي ${neighborhood} بالرياض - تعقيم وغسيل الخزانات، عزل إيبوكسي، شهادة صحية معتمدة من البلدية.`;
+
+const howToSteps = [
+  { name: "الاتصال والحجز", text: "تواصل معنا عبر الهاتف أو الواتساب لحجز موعد مناسب" },
+  { name: "تفريغ الخزان", text: "نقوم بسحب المياه الموجودة في الخزان بالكامل" },
+  { name: "التنظيف العميق", text: "تنظيف جدران وأرضية الخزان وإزالة الرواسب والطحالب" },
+  { name: "التعقيم", text: "تعقيم بالكلور المعتمد من البلدية للقضاء على البكتيريا" },
+  { name: "الشطف والتسليم", text: "شطف نهائي وتسليم مع شهادة صحية معتمدة" }
+];
+
+const tankServices = [
+  { name: "الخزانات الأرضية", desc: "تنظيف وتعقيم الخزانات الأرضية بمختلف الأحجام" },
+  { name: "الخزانات العلوية", desc: "تنظيف خزانات الأسطح مع فحص التمديدات" },
+  { name: "عزل الإيبوكسي", desc: "عزل مائي وحراري يمنع التسرب والتلوث" },
+  { name: "العزل الأسمنتي", desc: "عزل اقتصادي فعال للخزانات الخرسانية" },
+  { name: "كشف التسربات", desc: "فحص شامل للكشف عن أي تسريب في الخزان" },
+  { name: "إصلاح الشروخ", desc: "معالجة الشروخ والشقوق قبل العزل" }
+];
+---
+
+<Base title={pageTitle} description={pageDescription}>
+
+  <!-- Local Business + HowTo Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": pageTitle,
+        "description": pageDescription,
+        "serviceType": "Water Tank Cleaning",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": company.name,
+          "telephone": `+${company.whatsapp}`
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": `حي ${neighborhood}، الرياض، المملكة العربية السعودية`
+        }
+      },
+      {
+        "@type": "HowTo",
+        "name": `كيف تحجز خدمة تنظيف خزانات في حي ${neighborhood}`,
+        "description": `خطوات بسيطة لحجز خدمة تنظيف خزانات احترافية في حي ${neighborhood} بالرياض`,
+        "totalTime": "PT4H",
+        "estimatedCost": { "@type": "MonetaryAmount", "currency": "SAR", "value": "200-800" },
+        "step": howToSteps.map((step, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": step.name,
+          "text": step.text
+        }))
+      }
+    ]
+  })} />
+
+  <!-- Hero -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          مياه نقية وصحية
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">
+          نقدم خدمات تنظيف وتعقيم الخزانات لسكان حي <strong>{neighborhood}</strong> بأعلى معايير الجودة. مياه نظيفة وصحية لعائلتك.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+            اتصل الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}?text=السلام عليكم، أنا من حي ${neighborhood} وأحتاج خدمة تنظيف خزان`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-blue-500/10 text-blue-500 px-4 py-2 rounded-full text-sm font-bold mb-4">خدماتنا</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">خدمات تنظيف الخزانات في حي {neighborhood}</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {tankServices.map(tankService => (
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:border-blue-200 transition-all group">
+            <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">{tankService.name}</h3>
+            <p class="text-slate-500 text-sm">{tankService.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HowTo Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-4">كيف نعمل</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">خطوات تنظيف الخزان</h2>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-6">
+          {howToSteps.map((step, index) => (
+            <div class="flex gap-6 items-start">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg">
+                {index + 1}
+              </div>
+              <div class="flex-1 bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-2">{step.name}</h3>
+                <p class="text-slate-600">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-slate-50 p-8 md:p-12 rounded-3xl">
+        <h2 class="text-3xl font-heading font-bold text-slate-900 mb-8">تنظيف خزانات حي {neighborhood} بالرياض</h2>
+        
+        <div class="prose prose-lg max-w-none text-slate-600">
+          <p class="leading-relaxed mb-6">
+            يُعد <strong>حي {neighborhood}</strong> من الأحياء الراقية في شمال الرياض، وسكانه يستحقون مياه نظيفة وصحية. نحن في <a href="/" class="text-primary font-bold hover:underline">العالمية كلين</a> متخصصون في تنظيف وتعقيم الخزانات بأحدث المعدات.
+          </p>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">لماذا تنظيف الخزان مهم؟</h3>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>حماية صحة العائلة:</strong> إزالة البكتيريا والطحالب الضارة</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>تحسين طعم المياه:</strong> لا رواسب ولا روائح كريهة</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>إطالة عمر الخزان:</strong> الصيانة الدورية تمنع التآكل</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>الالتزام بالأنظمة:</strong> تنصح وزارة الصحة بالتنظيف كل 6 أشهر</span>
+            </li>
+          </ul>
+
+          <div class="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-2xl my-8">
+            <h4 class="font-bold text-slate-900 mb-3">لماذا نحن الخيار الأفضل في حي {neighborhood}؟</h4>
+            <ul class="grid grid-cols-2 gap-3">
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> قريبون من موقعك</li>
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> استجابة سريعة</li>
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> شهادة صحية</li>
+              <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ضمان على العزل</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Neighborhoods -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمة تنظيف الخزانات في أحياء أخرى</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/water-tanks-yasmin" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي الياسمين</a>
+        <a href="/services/water-tanks-malqa" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي الملقا</a>
+        <a href="/services/water-tanks-hittin" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي حطين</a>
+        <a href="/services/water-tanks-aqiq" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي العقيق</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">احجز تنظيف خزانك في حي {neighborhood} الآن</h2>
+      <p class="text-blue-100 text-lg mb-8">مياه نظيفة وصحية لعائلتك + شهادة صحية معتمدة</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

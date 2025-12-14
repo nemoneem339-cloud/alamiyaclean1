@@ -1,0 +1,49 @@
+---
+/**
+ * RSS Feed للمدونة
+ * =================
+ * يساعد في فهرسة المقالات بسرعة
+ */
+
+import { blogPosts } from '../data/blogPosts';
+import { company } from '../data/siteInfo';
+
+const items = blogPosts.map(post => `
+  <item>
+    <title><![CDATA[${post.title}]]></title>
+    <link>${company.siteUrl}/blog/${post.slug}</link>
+    <guid isPermaLink="true">${company.siteUrl}/blog/${post.slug}</guid>
+    <description><![CDATA[${post.excerpt}]]></description>
+    <pubDate>${new Date(post.publishDate).toUTCString()}</pubDate>
+    <category><![CDATA[${post.category}]]></category>
+    <author>${company.email} (${post.author})</author>
+    <enclosure url="${post.image}" type="image/jpeg" />
+  </item>
+`).join('');
+
+const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>${company.name} - المدونة</title>
+    <link>${company.siteUrl}/blog</link>
+    <description>نصائح ومقالات متخصصة في التنظيف ومكافحة الحشرات والعناية بالمنزل في الرياض</description>
+    <language>ar</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${company.siteUrl}/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>${company.siteUrl}/favicon.svg</url>
+      <title>${company.name}</title>
+      <link>${company.siteUrl}</link>
+    </image>
+    <copyright>© ${new Date().getFullYear()} ${company.name}</copyright>
+    <managingEditor>${company.email} (${company.name})</managingEditor>
+    <webMaster>${company.email} (${company.name})</webMaster>
+    <ttl>60</ttl>
+    ${items}
+  </channel>
+</rss>`;
+---
+{rss}

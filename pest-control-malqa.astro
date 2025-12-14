@@ -1,0 +1,111 @@
+---
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const neighborhood = "الملقا";
+const service = services.find(s => s.slug === 'pest-control');
+
+const pageTitle = `شركة مكافحة حشرات حي ${neighborhood} بالرياض`;
+const pageDescription = `أفضل شركة مكافحة حشرات في حي ${neighborhood} بالرياض - إبادة الصراصير والنمل الأبيض وبق الفراش. ضمان شامل، مبيدات آمنة.`;
+
+const howToSteps = [
+  { name: "تواصل معنا", text: "اتصل أو راسلنا عبر الواتساب" },
+  { name: "المعاينة", text: "فني متخصص يزور موقعك" },
+  { name: "خطة المكافحة", text: "نضع خطة مكافحة متكاملة" },
+  { name: "التنفيذ", text: "رش المبيدات الآمنة" },
+  { name: "المتابعة", text: "زيارات متابعة مجانية" }
+];
+---
+
+<Base title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": pageTitle,
+    "description": pageDescription,
+    "provider": { "@type": "LocalBusiness", "name": company.name, "telephone": `+${company.whatsapp}` },
+    "areaServed": { "@type": "Place", "name": `حي ${neighborhood}، الرياض` }
+  })} />
+
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ضمان شامل
+        </span>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 mb-8">خدمات مكافحة حشرات متكاملة لسكان حي <strong>{neighborhood}</strong>.</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg">اتصل الآن</a>
+          <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg">واتساب</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-heading font-bold text-slate-900">خطوات المكافحة</h2>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-6">
+        {howToSteps.map((step, index) => (
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold shrink-0">{index + 1}</div>
+            <div class="flex-1 bg-slate-50 p-6 rounded-2xl">
+              <h3 class="font-bold text-slate-900 mb-2">{step.name}</h3>
+              <p class="text-slate-600">{step.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white p-8 md:p-12 rounded-3xl">
+        <h2 class="text-3xl font-heading font-bold text-slate-900 mb-8">مكافحة حشرات حي {neighborhood}</h2>
+        <div class="prose prose-lg text-slate-600">
+          <p>يُعد حي {neighborhood} من الأحياء الراقية في شمال الرياض. نقدم لسكانه خدمات مكافحة حشرات احترافية تشمل:</p>
+          <ul class="space-y-2 my-6">
+            <li>إبادة الصراصير (الألماني والأمريكي)</li>
+            <li>مكافحة النمل الأبيض مع ضمان 15 سنة</li>
+            <li>القضاء على بق الفراش</li>
+            <li>مكافحة الفئران والقوارض</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">أحياء أخرى نخدمها</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/pest-control-narjis" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي النرجس</a>
+        <a href="/services/pest-control-yasmin" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي الياسمين</a>
+        <a href="/services/pest-control-hittin" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي حطين</a>
+        <a href="/services/pest-control-aqiq" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي العقيق</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gradient-to-r from-red-600 to-red-800 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold text-white mb-6">تخلص من الحشرات الآن</h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-red-600 px-8 py-4 rounded-xl font-bold text-lg">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg">واتساب</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,137 @@
+---
+/**
+ * صفحة المدونة الرئيسية
+ * =======================
+ * عرض جميع المقالات مع الفلترة والبحث
+ */
+
+import Base from '../../layouts/Base.astro';
+import { blogPosts, blogCategories } from '../../data/blogPosts';
+import { company } from '../../data/siteInfo';
+---
+
+<Base 
+  title="المدونة - نصائح ومقالات التنظيف" 
+  description="اقرأ أحدث المقالات والنصائح حول التنظيف ومكافحة الحشرات وصيانة المنزل في الرياض. دليلك الشامل للعناية بمنزلك."
+>
+
+  <!-- ==================== HEADER ==================== -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <span class="inline-block bg-white/10 backdrop-blur text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+        مقالات ونصائح مفيدة
+      </span>
+      <h1 class="text-4xl md:text-6xl font-heading font-bold mb-6">المدونة</h1>
+      <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+        نصائح ومقالات متخصصة في التنظيف والعناية بالمنزل من خبراء العالمية كلين
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ==================== BLOG GRID ==================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      
+      <!-- Categories -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12">
+        {blogCategories.map((cat) => (
+          <span class={`px-4 py-2 rounded-full text-sm font-bold cursor-pointer transition-colors ${cat.slug === 'all' ? 'bg-primary text-white' : 'bg-white text-slate-600 hover:bg-primary hover:text-white'}`}>
+            {cat.name}
+          </span>
+        ))}
+      </div>
+      
+      <!-- Blog Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post) => (
+          <article class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">
+            
+            <!-- Image -->
+            <a href={`/blog/${post.slug}`} class="block h-52 overflow-hidden relative">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10"></div>
+              <img 
+                src={post.image}
+                alt={post.title}
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
+              <span class="absolute top-4 right-4 z-20 bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold">
+                {post.category}
+              </span>
+            </a>
+            
+            <!-- Content -->
+            <div class="p-6">
+              <!-- Meta -->
+              <div class="flex items-center gap-4 text-xs text-slate-400 mb-3">
+                <span class="flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  {new Date(post.publishDate).toLocaleDateString('ar-SA')}
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {post.readTime}
+                </span>
+              </div>
+              
+              <!-- Title -->
+              <a href={`/blog/${post.slug}`}>
+                <h2 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                  {post.title}
+                </h2>
+              </a>
+              
+              <!-- Excerpt -->
+              <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                {post.excerpt}
+              </p>
+              
+              <!-- Read More -->
+              <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all">
+                اقرأ المزيد
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== NEWSLETTER CTA ==================== -->
+  <section class="py-16 bg-gradient-to-r from-primary to-blue-700">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+        اشترك في نشرتنا البريدية
+      </h2>
+      <p class="text-blue-100 mb-6 max-w-xl mx-auto">
+        احصل على أحدث النصائح والعروض الحصرية مباشرة في بريدك
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="بريدك الإلكتروني"
+          class="flex-1 px-4 py-3 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-secondary"
+          dir="ltr"
+        />
+        <button class="bg-secondary text-white px-6 py-3 rounded-xl font-bold hover:bg-cyan-600 transition-colors">
+          اشترك الآن
+        </button>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

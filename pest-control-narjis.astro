@@ -1,0 +1,211 @@
+---
+/**
+ * صفحة مكافحة حشرات حي النرجس
+ * ============================
+ * Local SEO optimized page
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const neighborhood = "النرجس";
+const neighborhoodEn = "narjis";
+const service = services.find(s => s.slug === 'pest-control');
+
+const pageTitle = `شركة مكافحة حشرات حي ${neighborhood} بالرياض`;
+const pageDescription = `أفضل شركة مكافحة حشرات في حي ${neighborhood} بالرياض - إبادة الصراصير والنمل الأبيض وبق الفراش. ضمان شامل، مبيدات آمنة، خدمة 24 ساعة.`;
+
+const howToSteps = [
+  { name: "تواصل معنا", text: "اتصل أو راسلنا عبر الواتساب لوصف المشكلة" },
+  { name: "المعاينة", text: "فني متخصص يزور موقعك لتحديد نوع الحشرات ومصدرها" },
+  { name: "خطة المكافحة", text: "نضع خطة مكافحة متكاملة تناسب حالتك" },
+  { name: "التنفيذ", text: "رش المبيدات الآمنة بدون مغادرة المنزل" },
+  { name: "المتابعة", text: "زيارات متابعة مجانية خلال فترة الضمان" }
+];
+
+const pests = [
+  { name: "الصراصير", desc: "إبادة تامة للصراصير الألماني والأمريكي" },
+  { name: "النمل الأبيض", desc: "حماية الأخشاب والأثاث مع ضمان 15 سنة" },
+  { name: "بق الفراش", desc: "القضاء على البق بتقنية البخار الحراري" },
+  { name: "النمل العادي", desc: "معالجة مصادر النمل ومنع عودته" },
+  { name: "الفئران", desc: "مصائد ذكية وطعوم آمنة للقوارض" },
+  { name: "العقارب والثعابين", desc: "حماية شاملة للحدائق والمداخل" }
+];
+---
+
+<Base title={pageTitle} description={pageDescription}>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": pageTitle,
+        "description": pageDescription,
+        "serviceType": "Pest Control",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": company.name,
+          "telephone": `+${company.whatsapp}`
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": `حي ${neighborhood}، الرياض، المملكة العربية السعودية`
+        }
+      },
+      {
+        "@type": "HowTo",
+        "name": `كيف تحجز خدمة مكافحة حشرات في حي ${neighborhood}`,
+        "step": howToSteps.map((step, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": step.name,
+          "text": step.text
+        }))
+      }
+    ]
+  })} />
+
+  <!-- Hero -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ضمان شامل على الخدمة
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">
+          نقدم خدمات مكافحة الحشرات المتكاملة لسكان حي <strong>{neighborhood}</strong>. إبادة تامة مع ضمان حقيقي.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+            اتصل الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}?text=السلام عليكم، أنا من حي ${neighborhood} وأحتاج خدمة مكافحة حشرات`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pests We Handle -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-red-500/10 text-red-500 px-4 py-2 rounded-full text-sm font-bold mb-4">نكافح</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">الحشرات التي نكافحها في حي {neighborhood}</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {pests.map(pest => (
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg hover:border-red-200 transition-all group">
+            <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="font-bold text-slate-900 mb-2">{pest.name}</h3>
+            <p class="text-slate-500 text-sm">{pest.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HowTo Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-4">كيف نعمل</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">خطوات المكافحة</h2>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-6">
+          {howToSteps.map((step, index) => (
+            <div class="flex gap-6 items-start">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg">
+                {index + 1}
+              </div>
+              <div class="flex-1 bg-white p-6 rounded-2xl shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-2">{step.name}</h3>
+                <p class="text-slate-600">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-slate-50 p-8 md:p-12 rounded-3xl">
+        <h2 class="text-3xl font-heading font-bold text-slate-900 mb-8">مكافحة حشرات حي {neighborhood} بالرياض</h2>
+        
+        <div class="prose prose-lg max-w-none text-slate-600">
+          <p class="leading-relaxed mb-6">
+            يواجه سكان <strong>حي {neighborhood}</strong> تحديات موسمية مع الحشرات، خاصة في فصل الصيف. نحن في <a href="/" class="text-primary font-bold">العالمية كلين</a> متخصصون في مكافحة جميع أنواع الحشرات بأحدث التقنيات.
+          </p>
+          
+          <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">مميزات خدمتنا:</h3>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>مبيدات بدون رائحة:</strong> آمنة على الأطفال والحيوانات الأليفة</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>بدون مغادرة المنزل:</strong> لا حاجة للخروج أثناء الرش</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>ضمان حقيقي:</strong> من 3 أشهر إلى 15 سنة حسب الخدمة</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>فنيون متخصصون:</strong> مدربون على أحدث تقنيات المكافحة</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Neighborhoods -->
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمة مكافحة الحشرات في أحياء أخرى</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/pest-control-yasmin" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي الياسمين</a>
+        <a href="/services/pest-control-malqa" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي الملقا</a>
+        <a href="/services/pest-control-hittin" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي حطين</a>
+        <a href="/services/pest-control-aqiq" class="px-6 py-3 bg-white rounded-full hover:bg-primary hover:text-white transition-colors font-medium shadow-sm">حي العقيق</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-red-600 to-red-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">تخلص من الحشرات في حي {neighborhood} الآن</h2>
+      <p class="text-red-100 text-lg mb-8">معاينة مجانية + ضمان شامل</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-50 transition-colors">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

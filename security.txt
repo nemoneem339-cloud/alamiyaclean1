@@ -1,0 +1,10 @@
+# Security.txt
+# https://securitytxt.org/
+# Contact information for security researchers
+
+Contact: mailto:security@alamiyaclean.sa
+Contact: tel:+966500000000
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: ar, en
+Canonical: https://alamiyaclean.sa/.well-known/security.txt
+Policy: https://alamiyaclean.sa/privacy

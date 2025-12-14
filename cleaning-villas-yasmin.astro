@@ -1,0 +1,126 @@
+---
+/**
+ * صفحة تنظيف فلل حي الياسمين
+ * =========================
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const neighborhood = "الياسمين";
+const service = services.find(s => s.slug === 'cleaning-villas');
+
+const pageTitle = `شركة تنظيف فلل حي ${neighborhood} بالرياض`;
+const pageDescription = `أفضل شركة تنظيف فلل في حي ${neighborhood} بالرياض - خدمات تنظيف شاملة للفلل والقصور. عمالة محترفة، أسعار تنافسية.`;
+
+const howToSteps = [
+  { name: "الاتصال والحجز", text: "تواصل معنا عبر الهاتف أو الواتساب لحجز موعد" },
+  { name: "المعاينة المجانية", text: "زيارة الفيلا لتقييم حالتها وتحديد الخدمات" },
+  { name: "عرض السعر", text: "عرض سعر شامل ومفصل بدون التزام" },
+  { name: "تنفيذ العمل", text: "فريق متخصص ينفذ العمل بأعلى جودة" },
+  { name: "الفحص والتسليم", text: "فحص نهائي للتأكد من جودة العمل" }
+];
+---
+
+<Base title={pageTitle} description={pageDescription}>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": pageTitle,
+        "description": pageDescription,
+        "provider": { "@type": "LocalBusiness", "name": company.name, "telephone": `+${company.whatsapp}` },
+        "areaServed": { "@type": "Place", "name": `حي ${neighborhood}، الرياض` }
+      },
+      {
+        "@type": "HowTo",
+        "name": `كيف تحجز خدمة تنظيف فلل في حي ${neighborhood}`,
+        "step": howToSteps.map((step, i) => ({ "@type": "HowToStep", "position": i + 1, "name": step.name, "text": step.text }))
+      }
+    ]
+  })} />
+
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-secondary/20 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          حي {neighborhood}
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">خدمات تنظيف الفلل والقصور لسكان حي <strong>{neighborhood}</strong> بأعلى معايير الجودة.</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg">اتصل الآن</a>
+          <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg">واتساب</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-heading font-bold text-slate-900">كيف تحجز الخدمة؟</h2>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-6">
+        {howToSteps.map((step, index) => (
+          <div class="flex gap-6 items-start">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold shrink-0">{index + 1}</div>
+            <div class="flex-1 bg-slate-50 p-6 rounded-2xl">
+              <h3 class="font-bold text-slate-900 mb-2">{step.name}</h3>
+              <p class="text-slate-600">{step.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm prose prose-lg max-w-none">
+        <h2 class="text-3xl font-heading font-bold text-slate-900 mb-6">تنظيف فلل حي {neighborhood}</h2>
+        <p>يُعد <strong>حي {neighborhood}</strong> من الأحياء الراقية في شمال الرياض، ويضم فللاً فاخرة تحتاج لعناية خاصة. نقدم خدمات تشمل:</p>
+        <ul>
+          <li>تنظيف الفلل الجديدة بعد التشطيب</li>
+          <li>جلي وتلميع الرخام والجرانيت</li>
+          <li>تنظيف المسابح والحدائق</li>
+          <li>غسيل الواجهات والنوافذ</li>
+          <li>تعقيم شامل بالبخار</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">نخدم أيضاً</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/services/cleaning-villas-narjis" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي النرجس</a>
+        <a href="/services/cleaning-villas-malqa" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي الملقا</a>
+        <a href="/services/cleaning-villas-hittin" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي حطين</a>
+        <a href="/services/cleaning-villas-nakhil" class="px-6 py-3 bg-slate-100 rounded-full hover:bg-primary hover:text-white transition-colors">حي النخيل</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-6">احجز تنظيف فيلتك في حي {neighborhood}</h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

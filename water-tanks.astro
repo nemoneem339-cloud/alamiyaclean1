@@ -1,0 +1,221 @@
+---
+/**
+ * صفحة تنظيف وعزل الخزانات
+ * =========================
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const service = services.find(s => s.slug === 'water-tanks');
+
+// أحياء الرياض
+const neighborhoods = [
+  { name: "النرجس", slug: "narjis" },
+  { name: "الياسمين", slug: "yasmin" },
+  { name: "الملقا", slug: "malqa" },
+  { name: "حطين", slug: "hittin" },
+  { name: "العقيق", slug: "aqiq" }
+];
+---
+
+<Base 
+  title="عزل وتنظيف الخزانات" 
+  description="أفضل شركة تنظيف خزانات بالرياض. تعقيم وعزل الخزانات بمواد مصرحة. ضمان مياه نقية وآمنة لعائلتك."
+>
+
+  <!-- HERO -->
+  <section class="relative min-h-[50vh] flex items-center overflow-hidden bg-slate-900">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=2070&q=80"
+        alt="تنظيف الخزانات"
+        class="w-full h-full object-cover object-center opacity-60"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 py-20">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1 rounded-full text-sm font-bold mb-4">
+          صحة عائلتك
+        </span>
+        <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
+          عزل وتنظيف الخزانات
+        </h1>
+        <p class="text-xl text-slate-300 mb-8">
+          ضمان مياه نقية لعائلتك مع خدمات العزل المعتمدة من البلدية.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors">
+            احجز الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}`} target="_blank" class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-colors">
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-heading font-bold text-slate-900 mb-6">تفاصيل الخدمة</h2>
+          
+          <div class="prose prose-lg max-w-none text-slate-600">
+            <p>
+              المياه في الخزانات الأرضية والعلوية معرضة للتلوث وتكون الطحالب. نقدم خدمة تفريغ، تنظيف، وتعقيم الخزانات باستخدام مواد مصرحة من البلدية.
+            </p>
+            
+            <h3 class="text-xl font-bold text-slate-900 mt-8 mb-4">خدماتنا تشمل:</h3>
+            
+            <ul class="space-y-3">
+              <li>
+                <strong>التفريغ والتنظيف:</strong> سحب المياه وكشط الجدران لإزالة الطحالب والرواسب.
+              </li>
+              <li>
+                <strong>التعقيم:</strong> استخدام مواد مطهرة آمنة للقضاء على البكتيريا.
+              </li>
+              <li>
+                <strong>العزل:</strong> عزل الخزانات بمادة الإيبوكسي أو العزل الأسمنتي لمنع التسرب.
+              </li>
+              <li>
+                <strong>كشف التسربات:</strong> فحص شامل للتأكد من سلامة الخزان.
+              </li>
+            </ul>
+            
+            <div class="bg-blue-50 p-6 rounded-xl border-r-4 border-secondary my-8">
+              <strong>نصيحة خبير:</strong> تنصح وزارة الصحة بتنظيف الخزانات كل 6 أشهر لضمان سلامة المياه.
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">مميزات الخدمة</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {service?.features.map((feature) => (
+                <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-secondary shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                  <span class="font-medium text-slate-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">الفوائد</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {service?.benefits.map((benefit) => (
+                <div class="flex items-center gap-3 p-4 bg-green-50 rounded-xl">
+                  <span class="text-green-600">✓</span>
+                  <span class="font-medium text-slate-700">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <div class="lg:col-span-1">
+          <div class="bg-slate-900 text-white p-8 rounded-3xl sticky top-24">
+            <h3 class="text-2xl font-bold mb-4">احجز الآن</h3>
+            <p class="text-slate-400 mb-6">تواصل معنا للحصول على عرض سعر مخصص</p>
+            
+            <div class="space-y-4">
+              <a href={`tel:${company.phone}`} class="w-full bg-white text-primary py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors">
+                اتصل الآن
+              </a>
+              <a href={`https://wa.me/${company.whatsapp}`} target="_blank" class="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors">
+                واتساب
+              </a>
+              <a href="/contact" class="w-full bg-secondary text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-cyan-600 transition-colors">
+                طلب عرض سعر
+              </a>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-slate-700">
+              <div class="flex items-center gap-3 text-sm text-slate-400">
+                <span>✓</span>
+                <span>مواد مصرحة من البلدية</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-400 mt-2">
+                <span>✓</span>
+                <span>تقرير فني مفصل</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-400 mt-2">
+                <span>✓</span>
+                <span>ضمان على العزل</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-heading font-bold text-slate-900 text-center mb-12">أسئلة شائعة</h2>
+      
+      <div class="space-y-4">
+        {service?.faqs.map((faq) => (
+          <details class="group border border-slate-200 rounded-2xl overflow-hidden bg-white hover:shadow-md transition-shadow">
+            <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+              <span>{faq.question}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 text-slate-400 group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+            </summary>
+            <div class="p-5 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOODS -->
+  <section class="py-20 bg-gradient-to-br from-slate-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-blue-500/10 text-blue-500 px-4 py-2 rounded-full text-sm font-bold mb-4">التغطية الجغرافية</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">تنظيف خزانات في حيك</h2>
+        <p class="text-slate-500 mt-4">اختر حيك للحصول على خدمة مخصصة</p>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+        {neighborhoods.map(n => (
+          <a href={`/services/water-tanks-${n.slug}`} class="group px-6 py-4 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all border border-slate-100 hover:border-blue-300">
+            <span class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="font-bold text-slate-700 group-hover:text-blue-500">حي {n.name}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER SERVICES -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-heading font-bold text-slate-900 text-center mb-12">خدمات أخرى</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.filter(s => s.slug !== 'water-tanks').slice(0, 3).map((s) => (
+          <a href={`/services/${s.slug}`} class="bg-slate-50 p-6 rounded-2xl hover:shadow-lg transition-shadow group">
+            <div class="text-4xl mb-4" set:html={s.icon} />
+            <h3 class="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors mb-2">{s.title}</h3>
+            <p class="text-slate-500 text-sm">{s.shortDesc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

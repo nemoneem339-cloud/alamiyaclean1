@@ -1,0 +1,290 @@
+---
+/**
+ * SEOHead Component - Enhanced Version
+ * =====================================
+ * يحتوي على جميع meta tags و JSON-LD للـ SEO المتقدم
+ * 
+ * للتعديل: عدّل البيانات في src/data/siteInfo.ts
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  article?: {
+    publishDate?: string;
+    modifiedDate?: string;
+    author?: string;
+    section?: string;
+    tags?: string[];
+  };
+}
+
+import { company, testimonials, services } from '../data/siteInfo';
+
+const { title, description, image, type = 'website', article } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, company.siteUrl);
+const currentPath = Astro.url.pathname;
+
+// حساب متوسط التقييمات
+const totalRating = testimonials.reduce((acc, t) => acc + t.rating, 0);
+const averageRating = (totalRating / testimonials.length).toFixed(1);
+
+// Breadcrumb Schema
+const pathParts = currentPath.split('/').filter(Boolean);
+const breadcrumbItems = [
+  { name: 'الرئيسية', url: company.siteUrl }
+];
+
+if (pathParts.length > 0) {
+  let path = '';
+  pathParts.forEach((part, index) => {
+    path += `/${part}`;
+    const name = part === 'services' ? 'خدماتنا' 
+               : part === 'blog' ? 'المدونة'
+               : part === 'about' ? 'عن الشركة'
+               : part === 'contact' ? 'اتصل بنا'
+               : decodeURIComponent(part);
+    breadcrumbItems.push({ name, url: `${company.siteUrl}${path}` });
+  });
+}
+
+// Services Schema
+const servicesSchema = services.map(service => ({
+  "@type": "Service",
+  "@id": `${company.siteUrl}/services/${service.slug}`,
+  "name": service.title,
+  "description": service.shortDesc,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": company.name
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "الرياض",
+    "addressCountry": "SA"
+  }
+}));
+
+// JSON-LD Schema
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": company.siteUrl,
+      "name": company.name,
+      "alternateName": company.nameEn,
+      "description": "شركة العالمية كلين للتنظيف ومكافحة الحشرات بالرياض - خدمات تنظيف فلل، مكافحة حشرات، تنظيف خزانات، غسيل مكيفات، جلي رخام",
+      "telephone": `+${company.whatsapp}`,
+      "email": company.email,
+      "url": company.siteUrl,
+      "logo": `${company.siteUrl}/favicon.svg`,
+      "image": image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "priceRange": "$$",
+      "currenciesAccepted": "SAR",
+      "paymentAccepted": "Cash, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": company.address,
+        "addressLocality": company.city,
+        "addressRegion": "الرياض",
+        "postalCode": "12345",
+        "addressCountry": "SA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.7136,
+        "longitude": 46.6753
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Friday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": averageRating,
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "500",
+        "reviewCount": testimonials.length.toString()
+      },
+      "review": testimonials.slice(0, 3).map(t => ({
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t.name },
+        "reviewRating": { "@type": "Rating", "ratingValue": t.rating.toString(), "bestRating": "5" },
+        "reviewBody": t.content
+      })),
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "خدمات التنظيف ومكافحة الحشرات",
+        "itemListElement": servicesSchema
+      },
+      "sameAs": [
+        company.instagram,
+        company.facebook,
+        company.twitter
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "الرياض", "addressCountry": "SA" },
+        { "@type": "AdministrativeArea", "name": "منطقة الرياض" }
+      ],
+      "knowsLanguage": ["ar", "en"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${company.siteUrl}/#website`,
+      "name": company.name,
+      "url": company.siteUrl,
+      "description": description,
+      "publisher": { "@id": company.siteUrl },
+      "inLanguage": "ar-SA",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${company.siteUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.name,
+        "item": item.url
+      }))
+    },
+    {
+      "@type": "Organization",
+      "@id": `${company.siteUrl}/#organization`,
+      "name": company.name,
+      "url": company.siteUrl,
+      "logo": `${company.siteUrl}/favicon.svg`,
+      "foundingDate": "2014",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": `+${company.whatsapp}`,
+        "contactType": "customer service",
+        "availableLanguage": ["Arabic", "English"],
+        "areaServed": "SA"
+      }
+    },
+    ...(type === 'article' && article ? [{
+      "@type": "BlogPosting",
+      "@id": `${canonicalURL}#article`,
+      "headline": title,
+      "description": description,
+      "image": image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "datePublished": article.publishDate,
+      "dateModified": article.modifiedDate || article.publishDate,
+      "author": {
+        "@type": "Person",
+        "name": article.author || company.name
+      },
+      "publisher": {
+        "@id": `${company.siteUrl}/#organization`
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalURL
+      }
+    }] : [])
+  ]
+};
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Primary Meta Tags -->
+<title>{title} | {company.name}</title>
+<meta name="title" content={`${title} | ${company.name}`} />
+<meta name="description" content={description} />
+<meta name="keywords" content="شركة تنظيف بالرياض, تنظيف فلل, غسيل مكيفات, تنظيف خزانات, مكافحة حشرات, جلي رخام, العالمية كلين, تنظيف منازل الرياض, رش مبيدات, تنظيف شقق, تعقيم خزانات, غسيل كنب, تلميع رخام" />
+<meta name="author" content={company.name} />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow" />
+<meta name="language" content="Arabic" />
+<meta name="revisit-after" content="3 days" />
+<meta name="rating" content="general" />
+<meta name="distribution" content="global" />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Alternate Languages -->
+<link rel="alternate" hreflang="ar" href={canonicalURL} />
+<link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={`${title} | ${company.name}`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta property="og:locale" content="ar_SA" />
+<meta property="og:site_name" content={company.name} />
+
+{type === 'article' && article && (
+  <>
+    <meta property="article:published_time" content={article.publishDate} />
+    <meta property="article:modified_time" content={article.modifiedDate || article.publishDate} />
+    <meta property="article:author" content={article.author || company.name} />
+    <meta property="article:section" content={article.section} />
+    {article.tags?.map(tag => <meta property="article:tag" content={tag} />)}
+  </>
+)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@alamiyaclean" />
+<meta name="twitter:creator" content="@alamiyaclean" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={`${title} | ${company.name}`} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"} />
+
+<!-- Geo Meta Tags -->
+<meta name="geo.position" content="24.7136;46.6753" />
+<meta name="geo.placename" content="Riyadh, Saudi Arabia" />
+<meta name="geo.region" content="SA-01" />
+<meta name="ICBM" content="24.7136, 46.6753" />
+
+<!-- Mobile App Meta -->
+<meta name="format-detection" content="telephone=yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content={company.name} />
+<meta name="application-name" content={company.name} />
+<meta name="theme-color" content="#1e3a5f" />
+<meta name="msapplication-TileColor" content="#1e3a5f" />
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<!-- Preconnect to External Resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://images.unsplash.com" />
+
+<!-- DNS Prefetch -->
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="/manifest.json" />
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title={`مدونة ${company.name}`} href="/rss.xml" />
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="/favicon.svg" />
+

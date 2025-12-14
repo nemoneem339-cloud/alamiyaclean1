@@ -1,0 +1,27 @@
+# العالمية كلين - Robots.txt
+# https://alamiyaclean.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /admin/
+
+# Crawl Delay
+Crawl-delay: 10
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+# Bingbot specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 10
+
+# Sitemaps
+Sitemap: https://alamiyaclean.com/sitemap.xml
+
+# Host
+Host: https://alamiyaclean.com

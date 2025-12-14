@@ -1,0 +1,206 @@
+---
+/**
+ * صفحة خدمة تنظيف منازل بالرياض
+ * ================================
+ * SEO optimized service page
+ */
+
+import Base from '../../layouts/Base.astro';
+import { company, services } from '../../data/siteInfo';
+
+const service = services.find(s => s.slug === 'home-cleaning');
+const otherServices = services.filter(s => s.slug !== 'home-cleaning').slice(0, 4);
+
+const pageTitle = "شركة تنظيف منازل بالرياض";
+const pageDescription = "أفضل شركة تنظيف منازل بالرياض - خدمات تنظيف شاملة للشقق والمنازل بأسعار تنافسية. عمالة مدربة، مواد آمنة، حجز فوري.";
+---
+
+<Base title={pageTitle} description={pageDescription}>
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": pageTitle,
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": company.name,
+      "telephone": `+${company.whatsapp}`,
+      "address": { "@type": "PostalAddress", "addressLocality": "الرياض", "addressCountry": "SA" }
+    },
+    "areaServed": { "@type": "City", "name": "الرياض" },
+    "serviceType": "Home Cleaning",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "SAR"
+    }
+  })} />
+
+  <!-- Hero Section -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={service?.image} alt={pageTitle} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 bg-secondary/20 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          خدمة متميزة
+        </span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">{pageTitle}</h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">{service?.shortDesc}</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`tel:${company.phone}`} class="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path></svg>
+            اتصل الآن
+          </a>
+          <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+            واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-bold mb-4">خدماتنا</span>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-slate-900">ماذا نقدم في تنظيف المنازل؟</h2>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {service?.features.map(feature => (
+          <div class="bg-slate-50 p-6 rounded-2xl text-center hover:shadow-lg transition-all group">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 class="font-bold text-slate-900">{feature}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Content Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm">
+          <h2 class="text-3xl font-heading font-bold text-slate-900 mb-8">لماذا تحتاج شركة تنظيف منازل محترفة؟</h2>
+          
+          <div class="prose prose-lg max-w-none text-slate-600">
+            <p class="leading-relaxed mb-6">
+              في وتيرة الحياة السريعة اليوم، أصبح الحفاظ على نظافة المنزل تحدياً كبيراً للعائلات في <strong>الرياض</strong>. بين العمل والأطفال والالتزامات الاجتماعية، يصعب تخصيص وقت كافٍ للتنظيف العميق. هنا يأتي دور <strong>شركة تنظيف منازل بالرياض</strong> المحترفة.
+            </p>
+            
+            <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">خدماتنا الشاملة تشمل:</h3>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>تنظيف غرف النوم والصالات:</strong> إزالة الغبار، تنظيف الأثاث، ترتيب المفروشات، تنظيف النوافذ والستائر.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>تنظيف المطابخ:</strong> تنظيف الفرن والثلاجة، إزالة الدهون، تلميع الأسطح، تنظيف خزائن المطبخ.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>تنظيف الحمامات:</strong> تعقيم السيراميك والأدوات الصحية، إزالة الجير والكلس، تلميع المرايا.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500 mt-1 shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span><strong>تنظيف الأرضيات:</strong> كنس وغسيل وتلميع جميع أنواع الأرضيات (سيراميك، رخام، باركيه).</span>
+              </li>
+            </ul>
+            
+            <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">لماذا العالمية كلين؟</h3>
+            <p class="leading-relaxed mb-6">
+              نحن في <a href="/" class="text-primary font-bold hover:underline">العالمية كلين</a> نتميز بخبرة تزيد عن <strong>10 سنوات</strong> في مجال تنظيف المنازل بالرياض. فريقنا مدرب على أعلى المعايير، ونستخدم مواد تنظيف آمنة على الأطفال والحيوانات الأليفة.
+            </p>
+            
+            <div class="bg-gradient-to-r from-primary/5 to-secondary/5 p-6 rounded-2xl my-8">
+              <h4 class="font-bold text-slate-900 mb-3">مميزاتنا:</h4>
+              <ul class="grid grid-cols-2 gap-3">
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> عمالة مدربة</li>
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> أسعار تنافسية</li>
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> مواد آمنة</li>
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> حجز فوري</li>
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ضمان الخدمة</li>
+                <li class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> عقود شهرية</li>
+              </ul>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">أسعار تنظيف المنازل بالرياض</h3>
+            <p class="leading-relaxed mb-6">
+              نقدم أسعاراً تنافسية تناسب جميع الميزانيات. تعتمد التكلفة على مساحة المنزل وعدد الغرف ونوع الخدمة المطلوبة. تواصل معنا للحصول على <strong>عرض سعر مجاني</strong>.
+            </p>
+            
+            <h3 class="text-2xl font-bold text-slate-900 mt-10 mb-4">مناطق الخدمة في الرياض</h3>
+            <p class="leading-relaxed">
+              نغطي جميع أحياء الرياض: النرجس، الياسمين، حطين، العقيق، الملقا، النخيل، الصحافة، الورود، السليمانية، المرسلات، وغيرها من الأحياء.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  {service?.faqs && service.faqs.length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-heading font-bold text-slate-900">أسئلة شائعة</h2>
+        </div>
+        <div class="space-y-4">
+          {service.faqs.map(faq => (
+            <details class="group border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">
+              <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800 list-none">
+                <span>{faq.question}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
+              </summary>
+              <div class="p-5 pt-0 text-slate-600 bg-white border-t border-slate-100">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-primary to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">احجز تنظيف منزلك الآن</h2>
+      <p class="text-blue-100 text-lg mb-8 max-w-xl mx-auto">تواصل معنا اليوم واحصل على عرض سعر مجاني</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${company.phone}`} class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg">{company.phone}</a>
+        <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Services -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">خدمات أخرى</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {otherServices.map(s => (
+          <a href={`/services/${s.slug}`} class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all text-center">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-primary" set:html={s.icon}></div>
+            <h3 class="font-bold text-slate-900 group-hover:text-primary text-sm">{s.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

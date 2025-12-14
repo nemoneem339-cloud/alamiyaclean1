@@ -1,0 +1,222 @@
+---
+/**
+ * مقالة: تنظيف خزانات المياه بالرياض
+ */
+import Base from '../../layouts/Base.astro';
+import { company } from '../../data/siteInfo';
+import { blogPosts } from '../../data/blogPosts';
+
+const post = blogPosts.find(p => p.slug === 'تنظيف-خزانات-المياه-الرياض')!;
+const relatedPosts = blogPosts.filter(p => p.id !== post.id).slice(0, 3);
+---
+
+<Base title={post.title} description={post.excerpt}>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image,
+    "author": { "@type": "Organization", "name": company.name },
+    "datePublished": post.publishDate
+  })} />
+
+  <section class="bg-slate-900 text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/50 to-slate-900 z-0"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto">
+
+        <span class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold mb-4">{post.category}</span>
+        <h1 class="text-3xl md:text-5xl font-heading font-bold mb-6">{post.title}</h1>
+        <div class="flex flex-wrap items-center gap-6 text-slate-300 text-sm">
+          <span>{post.author}</span>
+          <span>{new Date(post.publishDate).toLocaleDateString('ar-SA')}</span>
+          <span>{post.readTime}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mx-auto px-4 -mt-8 relative z-20">
+    <div class="max-w-4xl mx-auto">
+      <img src={post.image} alt={post.title} class="w-full h-[400px] object-cover rounded-2xl shadow-2xl" />
+    </div>
+  </div>
+
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Social Share -->
+        <div class="flex items-center gap-3 mb-8 pb-8 border-b border-slate-100">
+          <span class="text-sm font-bold text-slate-500">شارك:</span>
+          <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${company.siteUrl}/blog/${post.slug}`} target="_blank" class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          </a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${company.siteUrl}/blog/${post.slug}`} target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + company.siteUrl + '/blog/' + post.slug)}`} target="_blank" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+          </a>
+          <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(company.siteUrl + '/blog/' + post.slug)}`} target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="bg-gradient-to-r from-primary/5 to-secondary/5 border-r-4 border-primary p-6 rounded-2xl mb-10">
+          <h2 class="text-xl font-bold text-slate-900 mb-4">الخلاصة</h2>
+          <ul class="space-y-2 text-slate-700">
+            <li>✓ تنظيف الخزان كل 6 أشهر ضروري لصحة الأسرة</li>
+            <li>✓ المياه الراكدة تُنتج بكتيريا خطيرة وطحالب</li>
+            <li>✓ العزل بالإيبوكسي يحمي الخزان لسنوات طويلة</li>
+            <li>✓ التعقيم بالكلور يقضي على 99.9% من الجراثيم</li>
+          </ul>
+        </div>
+
+        <!-- Article Body -->
+        <div class="prose prose-lg prose-slate max-w-none">
+          
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">لماذا تنظيف خزانات المياه مهم؟</h2>
+          
+          <p class="text-slate-600 leading-relaxed mb-6">
+            الماء هو أساس الحياة، ونظافته تؤثر مباشرة على صحة عائلتك. في <strong>الرياض</strong>، تعتمد معظم المنازل على خزانات المياه العلوية والأرضية لتخزين المياه. مع مرور الوقت، تتراكم الرواسب والطحالب والبكتيريا في هذه الخزانات، مما يجعل تنظيفها الدوري ضرورة صحية لا غنى عنها.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            وزارة الصحة السعودية توصي بـ <a href="/services/water-tanks" class="text-primary font-bold hover:underline">تنظيف خزانات المياه</a> مرة كل 6 أشهر على الأقل. في <a href="/" class="text-primary font-bold hover:underline">العالمية كلين</a>، نقدم خدمة تنظيف وتعقيم وعزل الخزانات بمعايير عالية وباستخدام مواد مصرحة من البلدية.
+          </p>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">مخاطر إهمال تنظيف الخزان</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            قد لا تبدو المياه ملوثة بالعين المجردة، لكن الواقع مختلف. إليك بعض المخاطر الصحية لإهمال التنظيف:
+          </p>
+
+          <ul class="list-disc list-inside text-slate-600 mb-6 space-y-2">
+            <li><strong>بكتيريا الليجونيلا:</strong> تسبب أمراض الجهاز التنفسي الخطيرة</li>
+            <li><strong>الإشريكية القولونية:</strong> تسبب التسمم الغذائي والإسهال الشديد</li>
+            <li><strong>الطحالب:</strong> تنمو في المياه الراكدة وتغير لونها وطعمها</li>
+            <li><strong>الصدأ والرواسب:</strong> تتراكم في قاع الخزان وتؤثر على جودة المياه</li>
+            <li><strong>الحشرات والقوارض:</strong> قد تصل للخزان إذا كان غير محكم الإغلاق</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خطوات تنظيف الخزان الاحترافية</h2>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">1. تفريغ الخزان</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نبدأ بتفريغ الخزان بالكامل من المياه باستخدام مضخات قوية. هذه الخطوة ضرورية للوصول إلى جميع الأسطح الداخلية.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">2. الفرك والتنظيف</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نستخدم فرش خاصة ومواد تنظيف آمنة لفرك جدران وأرضية الخزان وإزالة جميع الرواسب والطحالب المتراكمة.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">3. الغسيل بالضغط</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نغسل الخزان بمياه نظيفة تحت ضغط عالي لإزالة جميع بقايا مواد التنظيف والأوساخ.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">4. التعقيم بالكلور</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نضيف محلول الكلور المعتمد بنسبة محددة لتعقيم الخزان والقضاء على جميع أنواع البكتيريا والفيروسات. نتبع معايير منظمة الصحة العالمية في نسب التعقيم.
+          </p>
+
+          <h3 class="text-xl font-bold text-slate-900 mb-3">5. الشطف النهائي والتجفيف</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            نشطف الخزان جيداً لإزالة أي آثار للكلور، ثم نتركه ليجف قبل إعادة ملئه.
+          </p>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">خدمة عزل الخزانات</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            بالإضافة للتنظيف، نقدم خدمة <strong>عزل خزانات المياه بالرياض</strong>. العزل يحمي الخزان من التسربات ويمنع تفاعل المياه مع مواد الخزان. نستخدم مادتين رئيسيتين:
+          </p>
+
+          <ul class="list-disc list-inside text-slate-600 mb-6 space-y-2">
+            <li><strong>الإيبوكسي:</strong> طلاء قوي ومقاوم للماء، مثالي للخزانات البلاستيكية والمعدنية</li>
+            <li><strong>العزل الأسمنتي:</strong> مناسب للخزانات الخرسانية الأرضية</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">نصائح للحفاظ على نظافة الخزان</h2>
+
+          <ol class="list-decimal list-inside text-slate-600 mb-6 space-y-2">
+            <li><strong>تأكد من إحكام الغطاء:</strong> يمنع دخول الحشرات والأتربة</li>
+            <li><strong>افحص الخزان شهرياً:</strong> للتأكد من عدم وجود تسربات أو تغير في لون المياه</li>
+            <li><strong>لا تترك الخزان فارغاً طويلاً:</strong> الفراغ يسبب تكون العفن</li>
+            <li><strong>نظف الفلاتر:</strong> إذا كان لديك فلاتر على خط المياه</li>
+            <li><strong>احجز تنظيفاً دورياً:</strong> كل 6 أشهر مع <a href="/contact" class="text-primary font-bold hover:underline">العالمية كلين</a></li>
+          </ol>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">كم تكلفة تنظيف الخزان في الرياض؟</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            تعتمد تكلفة <strong>تنظيف خزانات المياه بالرياض</strong> على عدة عوامل:
+          </p>
+
+          <ul class="list-disc list-inside text-slate-600 mb-6 space-y-2">
+            <li><strong>سعة الخزان:</strong> خزان 1000 لتر يختلف عن 10000 لتر</li>
+            <li><strong>نوع الخزان:</strong> علوي أم أرضي، بلاستيك أم خرساني</li>
+            <li><strong>الخدمات المطلوبة:</strong> تنظيف فقط أم تنظيف + عزل</li>
+            <li><strong>حالة الخزان:</strong> نظيف نسبياً أم متسخ جداً</li>
+          </ul>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            في العالمية كلين، نقدم أسعاراً تنافسية مع ضمان جودة العمل. تواصل معنا للحصول على عرض سعر مجاني.
+          </p>
+
+          <h2 class="text-2xl font-bold text-slate-900 mb-4 mt-10">الخلاصة</h2>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            <strong>تنظيف خزانات المياه</strong> ليس رفاهية بل ضرورة صحية. المياه الملوثة يمكن أن تسبب أمراضاً خطيرة لعائلتك، خاصة الأطفال وكبار السن. مع خدمات <a href="/" class="text-primary font-bold hover:underline">العالمية كلين</a>، يمكنك الاطمئنان على نظافة وسلامة مياه منزلك.
+          </p>
+
+          <p class="text-slate-600 leading-relaxed mb-6">
+            لا تنتظر حتى تظهر المشاكل. احجز موعد تنظيف خزانك اليوم على <a href={`tel:${company.phone}`} class="text-primary font-bold" dir="ltr">{company.phone}</a> أو عبر <a href={`https://wa.me/${company.whatsapp}`} class="text-primary font-bold">واتساب</a>.
+          </p>
+
+        </div>
+
+        <!-- Tags -->
+        <div class="mt-10 pt-8 border-t border-slate-100">
+          <div class="flex flex-wrap gap-2">
+            {post.keywords.map(k => <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-sm">{k}</span>)}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 bg-gradient-to-r from-primary to-blue-700 p-8 rounded-2xl text-white text-center">
+          <h3 class="text-2xl font-bold mb-3">احجز تنظيف خزانك الآن</h3>
+          <p class="text-blue-100 mb-6">معاينة مجانية + عرض سعر خلال 24 ساعة</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`tel:${company.phone}`} class="bg-white text-primary px-6 py-3 rounded-xl font-bold">اتصل الآن</a>
+            <a href={`https://wa.me/${company.whatsapp}`} class="bg-green-500 text-white px-6 py-3 rounded-xl font-bold">واتساب</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-heading font-bold text-slate-900 mb-8 text-center">مقالات ذات صلة</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {relatedPosts.map(p => (
+          <a href={`/blog/${p.slug}`} class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg">
+            <div class="h-40 overflow-hidden">
+              <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-slate-900 group-hover:text-primary">{p.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>
